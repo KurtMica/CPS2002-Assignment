@@ -25,7 +25,7 @@ public class Account
     
     public String getName()
     {
-    	return "";
+    	return accountName;
     }
     
     public boolean adjustBalance(long amount)

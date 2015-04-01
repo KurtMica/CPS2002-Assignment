@@ -17,6 +17,9 @@ public class AccountTest
     {
         acc1 = new Account(1, "First");   
     }
+    
+    /* getters tests */
+    
     @Test
     public void testGetNumber()
     {
@@ -28,6 +31,8 @@ public class AccountTest
     {
     	Assert.assertEquals("First", acc1.getNumber());
     }
+    
+    /* adjustBalance() tests */
     
     @Test
     public void testAdjustBalancePositive()
@@ -46,6 +51,8 @@ public class AccountTest
     {
     	Assert.assertEquals(true, acc1.adjustBalance(0));
     }
+    
+    /* checkBalance() tests */
     
     @Test
     public void testCheckBalance()

@@ -33,6 +33,15 @@ public class AccountDatabase {
     
     public boolean deleteAccount(int accNum)
     {
+        int i =0;
+        while(i<database.size())
+        {
+            if(accNum == database.get(i).getNumber())
+            {
+                database.remove(i);
+                return true;
+            }
+        }
         return false;
     }
     

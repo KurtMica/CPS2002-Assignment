@@ -25,14 +25,14 @@ public class AccountDatabaseTest {
     @Test
     public void testAddAccountSuccess()
     {
-        Assert.assertEquals(true, accountDb.addAccount(1, "Joe"));
+        Assert.assertTrue(accountDb.addAccount(1, "Joe"));
     }
     
     @Test
     public void testAddAccountFail()
     {
         accountDb.addAccount(1, "Michael");
-        Assert.assertEquals(false, accountDb.addAccount(1, "Mary"));
+        Assert.assertFalse(accountDb.addAccount(1, "Mary"));
     }
     
     /* deleteAccount tests */
@@ -41,13 +41,13 @@ public class AccountDatabaseTest {
     public void testDeleteAccountSuccess()
     {
         accountDb.addAccount(1, "Michael");
-        Assert.assertEquals(true, accountDb.deleteAccount(1));    
+        Assert.assertTrue(accountDb.deleteAccount(1));    
     }
     
     @Test
     public void testDeleteAccountFail()
     {
-        Assert.assertEquals(false, accountDb.deleteAccount(1));
+        Assert.assertFalse(accountDb.deleteAccount(1));
     }
    
     /* validateNumber tests */
@@ -55,14 +55,14 @@ public class AccountDatabaseTest {
     @Test
     public void testValidateNumberSuccess()
     {
-    	Assert.assertEquals(true, accountDb.validateNumber(1));
+    	Assert.assertTrue(accountDb.validateNumber(1));
     }
     
     @Test
     public void testValidateNumberFail()
     {
     	accountDb.addAccount(1, "Mark");
-    	Assert.assertEquals(false, accountDb.validateNumber(1));
+    	Assert.assertFalse(accountDb.validateNumber(1));
     }
     
     @Test

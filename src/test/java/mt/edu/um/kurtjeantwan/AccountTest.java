@@ -37,19 +37,19 @@ public class AccountTest
     @Test
     public void testAdjustBalancePositive()
     {
-    	Assert.assertEquals(true, acc1.adjustBalance(5));
+    	Assert.assertTrue(acc1.adjustBalance(5));
     }
     
     @Test
     public void testAdjustBalanceNegative()
     {
-        Assert.assertEquals(false, acc1.adjustBalance(-2));
+        Assert.assertFalse(acc1.adjustBalance(-2));
     }
     
     @Test
     public void testAdjustBalanceZero()
     {
-    	Assert.assertEquals(true, acc1.adjustBalance(0));
+    	Assert.assertTrue(acc1.adjustBalance(0));
     }
     
     /* checkBalance() tests */

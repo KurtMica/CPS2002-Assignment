@@ -20,36 +20,56 @@ public class AccountDatabaseTest {
         accountDb = new AccountDatabase();
     }
    
-    
-    /* addAccount Tests*/
+    /* addAccount tests */
     
     @Test
-    public void addAccountTestSuccess()
+    public void testAddAccountSuccess()
     {
         Assert.assertEquals(true, accountDb.addAccount(1, "Joe"));
     }
     
     @Test
-    public void addAccountTestFail()
+    public void testAddAccountFail()
     {
         accountDb.addAccount(1, "Michael");
         Assert.assertEquals(false, accountDb.addAccount(1, "Mary"));
     }
     
-    
-    /* deleteAccount Tests*/
+    /* deleteAccount tests */
     
     @Test
-    public void deleteAccountTestSuccess()
+    public void testDeleteAccountSuccess()
     {
         accountDb.addAccount(1, "Michael");
         Assert.assertEquals(true, accountDb.deleteAccount(1));    
     }
     
     @Test
-    public void deleteAccountTestFail()
+    public void testDeleteAccountFail()
     {
         Assert.assertEquals(false, accountDb.deleteAccount(1));
     }
    
+    /* validateNumber tests */
+    
+    @Test
+    public void testValidateNumberSuccess()
+    {
+    	Assert.assertEquals(true, accountDb.validateNumber(1));
+    }
+    
+    @Test
+    public void testValidateNumberFail()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	Assert.assertEquals(false, accountDb.validateNumber(1));
+    }
+    
+    @Test
+    public void testValidateNumberSuccess2()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	accountDb.deleteAccount(1);
+    	Assert.assertEquals(true, accountDb.validateNumber(1));
+    }
 }

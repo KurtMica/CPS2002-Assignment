@@ -11,7 +11,7 @@ public class Account
     private String accountName;
     private long accountBalance;
     
-    public Account(int num, String Name)
+    protected Account(int num, String Name)
     {
         accountNumber = num;
         accountName = Name;

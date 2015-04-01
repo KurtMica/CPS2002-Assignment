@@ -17,4 +17,20 @@ public class AccountDatabase {
         database = new ArrayList<Account>();
     }
     
+    public boolean addAccount(int accNum, String accName)
+    {
+        return false;
+    }
+    
+    public boolean deleteAccount(int accNum)
+    {
+        return false;
+    }
+    
+    
+    public boolean validateNumber(int accNum)
+    {
+        return false;
+    }
+    
 }

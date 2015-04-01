@@ -23,4 +23,10 @@ public class AccountTest
     	Assert.assertEquals(true, acc1.accountBalance(5));
     }
     
+    @Test
+    public void testAccountBalanceNegative()
+    {
+        Assert.assertEquals(false, acc1.accountBalance(-2));
+    }
+    
 }

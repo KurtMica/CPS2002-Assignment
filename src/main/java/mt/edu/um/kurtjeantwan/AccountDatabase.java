@@ -61,14 +61,12 @@ public class AccountDatabase
     
     public Account getAccount(int accountNumber)
     {
-    	int i = 0;
-    	while(i < database.size());
+    	for(int i = 0; i < database.size(); i++)
     	{
     		if(accountNumber == database.get(i).getNumber())
     		{
     			return database.get(i);
     		}
-    		i++;
     	}
     	return null;
     }

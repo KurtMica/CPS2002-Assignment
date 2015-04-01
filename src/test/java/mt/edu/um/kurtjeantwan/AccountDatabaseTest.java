@@ -75,7 +75,7 @@ public class AccountDatabaseTest {
     
     /* getAccount tests */
     
-    @Test
+    /*@Test
     public void testGetAccountFail()
     {
     	Assert.assertNull(accountDb.getAccount(1));
@@ -94,7 +94,7 @@ public class AccountDatabaseTest {
     	accountDb.addAccount(1, "Mark");
     	accountDb.deleteAccount(1);
     	Assert.assertNull(accountDb.getAccount(1));
-    }
+    }*/
     
     /* getSize tests */
     

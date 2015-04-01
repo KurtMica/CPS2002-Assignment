@@ -75,6 +75,6 @@ public class AccountDatabase
     
     public int getSize()
     {
-    	return -1;
+    	return database.size();
     }
 }

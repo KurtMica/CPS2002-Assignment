@@ -61,7 +61,16 @@ public class AccountDatabase
     
     public Account getAccount(int accountNumber)
     {
-    	return new Account(-1, "");
+    	int i = 0;
+    	while(i < database.size());
+    	{
+    		if(accountNumber == database.get(i).getNumber())
+    		{
+    			return database.get(i);
+    		}
+    		i++;
+    	}
+    	return null;
     }
     
     public int getSize()

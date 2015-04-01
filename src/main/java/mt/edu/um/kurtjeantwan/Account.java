@@ -30,4 +30,9 @@ public class Account
             return false;
         }
     }
+    
+    public int checkBalance()
+    {
+    	return -1;
+    }
 }

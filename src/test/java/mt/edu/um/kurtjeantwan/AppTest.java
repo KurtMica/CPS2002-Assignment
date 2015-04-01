@@ -5,7 +5,7 @@ import org.junit.Before;
 import org.junit.Assert;
 
 /**
- * Test for shell code
+ * Test for shell code.
  */
 public class AppTest 
 {

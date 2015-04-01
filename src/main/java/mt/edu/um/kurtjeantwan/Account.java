@@ -20,7 +20,7 @@ public class Account
     
     public int getNumber()
     {
-    	return -1;
+    	return accountNumber;
     }
     
     public String getName()

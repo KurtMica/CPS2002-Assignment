@@ -15,6 +15,10 @@ public class Account
             accountNumber = num;
             accountName = Name;
             accountBalance = 0;
+        }
+        
+        public boolean adjustBalance(long amount)
+        {
         
         }
 }

@@ -26,7 +26,7 @@ public class AccountTest
     @Test
     public void testGetName()
     {
-    	Assert.assertEquals("First", acc1.setNumber());
+    	Assert.assertEquals("First", acc1.getNumber());
     }
     
     @Test

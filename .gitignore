@@ -1,1 +1,7 @@
 .settings
+.metadata
+.recommenders
+.classpath
+.project
+.netbeans_automatic_build
+bin

@@ -1,38 +1,24 @@
 package mt.edu.um.kurtjeantwan;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Test;
+import org.junit.Before;
+import org.junit.Assert;
 
 /**
- * Unit test for simple App.
+ * Test for shell code
  */
 public class AppTest 
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    private App app1;
+    
+    @Before
+    public void setup()
     {
-        super( testName );
+        app1 = new App();   
     }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
+    
+    @Test
+    public void testMultiplication(){
+        Assert.assertEquals(10, app1.multiplication(5,2));
     }
 }

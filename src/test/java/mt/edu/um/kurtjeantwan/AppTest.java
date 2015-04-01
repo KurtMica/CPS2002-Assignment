@@ -18,7 +18,14 @@ public class AppTest
     }
     
     @Test
-    public void testMultiplication(){
+    public void testAddition()
+    {
+    	Assert.assertEquals(5, app1.multiplication(2, 2));
+    }
+    
+    @Test
+    public void testMultiplication()
+    {
         Assert.assertEquals(10, app1.multiplication(5,2));
     }
 }

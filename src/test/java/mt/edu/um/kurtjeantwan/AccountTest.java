@@ -30,4 +30,9 @@ public class AccountTest
         Assert.assertEquals(false, acc1.adjustBalance(-2));
     }
     
+    @Test
+    public void testCheckBalance()
+    {
+    	Assert.assertEquals(0, acc1.checkBalance());
+    }
 }

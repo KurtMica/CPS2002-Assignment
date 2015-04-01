@@ -72,4 +72,50 @@ public class AccountDatabaseTest {
     	accountDb.deleteAccount(1);
     	Assert.assertEquals(true, accountDb.validateNumber(1));
     }
+    
+    /* getAccount tests */
+    
+    @Test
+    public void testGetAccountFail()
+    {
+    	Assert.assertNull(accountDb.getAccount(1));
+    }
+    
+    @Test
+    public void testGetAccountSucess()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	Assert.assertSame(new Account(1, "Mark"), accountDb.getAccount(1));
+    }
+    
+    @Test
+    public void testGetAccountFail2()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	accountDb.deleteAccount(1);
+    	Assert.assertNull(accountDb.getAccount(1));
+    }
+    
+    /* getSize tests */
+    
+    @Test
+    public void testGetSizeEmpty()
+    {
+    	Assert.assertEquals(0, accountDb.getSize());
+    }
+    
+    @Test
+    public void testGetSizeAdded()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	Assert.assertEquals(1, accountDb.getSize());
+    }
+    
+    @Test
+    public void testGetSizeZero()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	accountDb.deleteAccount(1);
+    	Assert.assertEquals(0, accountDb.getSize());
+    }
 }

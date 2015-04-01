@@ -5,7 +5,8 @@ import org.junit.Before;
 import org.junit.Assert;
 
 /**
- * Test for shell code.
+ * This class is used to test the Account Class.
+ * Before each test, the setup function will be executed
  */
 public class AccountTest 
 {

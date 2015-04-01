@@ -1,9 +1,10 @@
 package mt.edu.um.kurtjeantwan;
 
 /**
- * Shell code used for setup checks.
+ * This is the Account class.
  *
  */
+
 public class Account 
 {
 	private int accountNumber;
@@ -19,6 +20,21 @@ public class Account
         
         public boolean adjustBalance(long amount)
         {
+            if(amount >= 0)
+            {
+                accountBalance += amount;
+                return true;
+            }
+            if(amount < 0 && (Math.abs(amount) <= accountBalance))
+            {
+                accountBalance -= Math.abs(amount);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         
         }
 }

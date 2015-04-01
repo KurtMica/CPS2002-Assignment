@@ -19,7 +19,8 @@ public class AccountDatabase {
     
     public boolean addAccount(int accNum, String accName)
     {
-        return false;
+         return false;   
+        
     }
     
     public boolean deleteAccount(int accNum)
@@ -30,7 +31,15 @@ public class AccountDatabase {
     
     public boolean validateNumber(int accNum)
     {
-        return false;
+        int i =0;
+        while(i<database.size())
+        {
+            if(accNum == database.get(i).getNumber())
+            {
+                return false;
+            }
+        }
+        return true;
     }
     
 }

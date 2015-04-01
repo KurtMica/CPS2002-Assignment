@@ -33,7 +33,7 @@ public class AccountTest
     @Test
     public void testAccountBalanceZero()
     {
-    	Assert.assertEquals(true, acc.adjustBalance(0));
+    	Assert.assertEquals(true, acc1.adjustBalance(0));
     }
     
     @Test

@@ -18,6 +18,16 @@ public class Account
         accountBalance = 0;
     }
     
+    public int getNumber()
+    {
+    	return -1;
+    }
+    
+    public String getName()
+    {
+    	return "";
+    }
+    
     public boolean adjustBalance(long amount)
     {
         if((amount + accountBalance >= 0))

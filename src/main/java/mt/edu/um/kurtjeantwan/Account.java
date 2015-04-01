@@ -31,8 +31,8 @@ public class Account
         }
     }
     
-    public int checkBalance()
+    public long checkBalance()
     {
-    	return -1;
+    	return accountBalance;
     }
 }

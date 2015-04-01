@@ -5,23 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- This is the AccountDatabase Class. It contains a list of Accounts
+ * This is the AccountDatabase Class. It contains a list of Accounts
  */
-public class AccountDatabase {
-    
+public class AccountDatabase
+{    
     private List<Account> database;
-   
     
     public AccountDatabase()
     {
         database = new ArrayList<Account>();
     }
     
-    public boolean addAccount(int accNum, String accName)
+    public boolean addAccount(int accountNumber, String accountName)
     {
-        if(validateNumber(accNum))
+        if(validateNumber(accountNumber))
         {
-            database.add(new Account(accNum, accName));
+            database.add(new Account(accountNumber, accountName));
             return true;
         }
         else
@@ -31,32 +30,42 @@ public class AccountDatabase {
         
     }
     
-    public boolean deleteAccount(int accNum)
+    public boolean deleteAccount(int accountNumber)
     {
-        int i =0;
-        while(i<database.size())
+        int i = 0;
+        while(i < database.size())
         {
-            if(accNum == database.get(i).getNumber())
+            if(accountNumber == database.get(i).getNumber())
             {
                 database.remove(i);
                 return true;
             }
+            i++;
         }
         return false;
     }
     
-    
-    public boolean validateNumber(int accNum)
+    public boolean validateNumber(int accountNumber)
     {
-        int i =0;
-        while(i<database.size())
+        int i = 0;
+        while(i < database.size())
         {
-            if(accNum == database.get(i).getNumber())
+            if(accountNumber == database.get(i).getNumber())
             {
                 return false;
             }
+            i++;
         }
         return true;
     }
     
+    public Account getAccount(int accountNumber)
+    {
+    	return new Account(-1, "");
+    }
+    
+    public int getSize()
+    {
+    	return -1;
+    }
 }

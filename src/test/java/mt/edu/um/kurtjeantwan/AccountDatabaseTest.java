@@ -7,8 +7,8 @@ import org.junit.Test;
 import org.junit.Assert;
 
 /**
-This class is used to test the AccountDatabase Class.
- Before each test, the setup function will be executed. 
+ * This class is used to test the AccountDatabase Class.
+ * Before each test, the setup function will be executed. 
  */
 public class AccountDatabaseTest {
     

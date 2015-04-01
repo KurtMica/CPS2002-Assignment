@@ -20,14 +20,9 @@ public class Account
         
         public boolean adjustBalance(long amount)
         {
-            if(amount >= 0)
+            if((amount + accountBalance >= 0))
             {
                 accountBalance += amount;
-                return true;
-            }
-            if(amount < 0 && (Math.abs(amount) <= accountBalance))
-            {
-                accountBalance -= Math.abs(amount);
                 return true;
             }
             else

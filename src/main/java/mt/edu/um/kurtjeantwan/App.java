@@ -1,13 +1,12 @@
 package mt.edu.um.kurtjeantwan;
 
 /**
- * Hello world!
+ * Shell code used for setup checks
  *
  */
 public class App 
 {
-    public static void main( String[] args )
+    public int multiplication(int a, int b)
     {
-        System.out.println( "Hello World!" );
     }
 }

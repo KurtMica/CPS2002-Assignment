@@ -47,16 +47,14 @@ public class AccountDatabase
     
     public boolean validateNumber(int accountNumber)
     {
-        int i = 0;
-        while(i < database.size())
-        {
-            if(accountNumber == database.get(i).getNumber())
-            {
-                return false;
-            }
-            i++;
-        }
-        return true;
+    	if(getAccount(accountNumber) == null)
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
     }
     
     public Account getAccount(int accountNumber)

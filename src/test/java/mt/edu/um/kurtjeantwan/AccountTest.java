@@ -29,7 +29,7 @@ public class AccountTest
     @Test
     public void testGetName()
     {
-    	Assert.assertEquals("First", acc1.getNumber());
+    	Assert.assertEquals("First", acc1.getName());
     }
     
     /* adjustBalance() tests */

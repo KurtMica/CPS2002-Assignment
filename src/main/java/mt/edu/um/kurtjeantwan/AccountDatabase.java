@@ -19,7 +19,15 @@ public class AccountDatabase {
     
     public boolean addAccount(int accNum, String accName)
     {
-         return false;   
+        if(validateNumber(accNum))
+        {
+            database.add(new Account(accNum, accName));
+            return true;
+        }
+        else
+        {
+            return false;            
+        }   
         
     }
     

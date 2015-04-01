@@ -96,6 +96,21 @@ public class AccountDatabaseTest {
     	Assert.assertNull(accountDb.getAccount(1));
     }
     
+    @Test
+    public void testGetAccountSucess2()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	accountDb.addAccount(2, "Mary");
+    	Assert.assertNotNull(accountDb.getAccount(2));
+    }
+    
+    @Test
+    public void testGetAccountFail3()
+    {
+    	accountDb.addAccount(1, "Mark");
+    	Assert.assertNull(accountDb.getAccount(2));
+    }
+    
     /* getSize tests */
     
     @Test

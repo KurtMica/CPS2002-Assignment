@@ -6,7 +6,7 @@ import org.junit.Assert;
 
 /**
  * This class is used to test the Account Class.
- * Before each test, the setup function will be executed
+ * Before each test, the setup function will be executed.
  */
 public class AccountTest 
 {
@@ -34,5 +34,12 @@ public class AccountTest
     public void testCheckBalance()
     {
     	Assert.assertEquals(0, acc1.checkBalance());
+    }
+    
+    @Test
+    public void testCheckBalanceChangedUp()
+    {
+    	acc1.adjustBalance(5);
+    	Assert.assertEquals(5, acc1.checkBalance());
     }
 }

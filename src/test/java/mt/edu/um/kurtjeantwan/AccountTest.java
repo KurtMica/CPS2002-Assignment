@@ -17,21 +17,32 @@ public class AccountTest
     {
         acc1 = new Account(1, "First");   
     }
+    @Test
+    public void testGetNumber()
+    {
+    	Assert.assertEquals(1, acc1.getNumber());
+    }
     
     @Test
-    public void testAccountBalancePositive()
+    public void testGetName()
+    {
+    	Assert.assertEquals("First", acc1.setNumber());
+    }
+    
+    @Test
+    public void testAdjustBalancePositive()
     {
     	Assert.assertEquals(true, acc1.adjustBalance(5));
     }
     
     @Test
-    public void testAccountBalanceNegative()
+    public void testAdjustBalanceNegative()
     {
         Assert.assertEquals(false, acc1.adjustBalance(-2));
     }
     
     @Test
-    public void testAccountBalanceZero()
+    public void testAdjustBalanceZero()
     {
     	Assert.assertEquals(true, acc1.adjustBalance(0));
     }

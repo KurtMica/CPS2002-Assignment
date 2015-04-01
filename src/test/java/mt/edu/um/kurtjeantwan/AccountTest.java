@@ -42,4 +42,12 @@ public class AccountTest
     	acc1.adjustBalance(5);
     	Assert.assertEquals(5, acc1.checkBalance());
     }
+    
+    @Test
+    public void testCheckBalanceChangedUpDown()
+    {
+    	acc1.adjustBalance(5);
+    	acc1.adjustBalance(-2);
+    	Assert.assertEquals(3, acc1.checkBalance());
+    }
 }

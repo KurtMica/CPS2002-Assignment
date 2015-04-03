@@ -12,7 +12,7 @@ public class Transaction
 	private long amount;
 	private AccountDatabase accountDb;
 	
-	protected Transaction(int destination, int source, int amount, AccountDatabase database)
+	protected Transaction(int source, int destination, int amount, AccountDatabase database)
 	{
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;

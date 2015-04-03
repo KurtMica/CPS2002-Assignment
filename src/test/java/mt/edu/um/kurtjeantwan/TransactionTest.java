@@ -27,42 +27,42 @@ public class TransactionTest
 	@Test
 	public void testProcessSucess()
 	{
-		Transaction trn = new Transaction(1, 2, 3);
+		Transaction trn = new Transaction(1, 2, 3, accountDb);
 		Assert.assertTrue(trn.process());
 	}
 	
 	@Test
 	public void testProcessSucessBound()
 	{
-		Transaction trn = new Transaction(1, 2, 5);
+		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Assert.assertTrue(trn.process());
 	}
 	
 	@Test
 	public void testProcessFailAmount()
 	{
-		Transaction trn = new Transaction(1, 2, 10);
+		Transaction trn = new Transaction(1, 2, 10, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
 	public void testProcessFailAmountBound()
 	{
-		Transaction trn = new Transaction(1, 2, 6);
+		Transaction trn = new Transaction(1, 2, 6, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
 	public void testProcessFailAccountSrc()
 	{
-		Transaction trn = new Transaction(3, 2, 5);
+		Transaction trn = new Transaction(3, 2, 5, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
 	public void testProcessFailAccountDst()
 	{
-		Transaction trn = new Transaction(1, 3, 5);
+		Transaction trn = new Transaction(1, 3, 5, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 }

@@ -10,16 +10,37 @@ public class Transaction
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
 	private long amount;
+	private AccountDatabase accountDb;
 	
-	protected Transaction(int destination, int source, int amount)
+	protected Transaction(int destination, int source, int amount, AccountDatabase database)
 	{
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
 		this.amount = amount;
+		accountDb = database;
 	}
 	
 	public boolean process()
 	{
-		return true;
+		Account src = accountDb.getAccount(sourceAccountNumber);
+		Account dst = accountDb.getAccount(destinationAccountNumber);
+		// check if account exists
+		if(src != null && dst != null)
+		{
+			// check if there is enough money in source
+			if(src.adjustBalance(-amount))
+			{
+				dst.adjustBalance(amount);
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
 	}
 }

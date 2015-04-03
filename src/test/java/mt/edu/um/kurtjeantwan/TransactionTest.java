@@ -5,6 +5,10 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * This class is used to test the AccountDatabase Class.
+ * Before each test, the setup function will be executed. 
+ */
 public class TransactionTest
 {
 	private AccountDatabase accountDb;

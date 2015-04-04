@@ -43,4 +43,9 @@ public class Transaction
 			return false;
 		}
 	}
+	
+	public boolean timeElapsed()
+	{
+		return true;
+	}
 }

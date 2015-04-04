@@ -76,7 +76,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testTimeElapsedSmallDelay()
+	public void testTimeElapsedSmallDelay() throws InterruptedException
 	{
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(5000); // 5 seconds
@@ -84,7 +84,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testTimeElapsedExactDelay()
+	public void testTimeElapsedExactDelay() throws InterruptedException
 	{
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(15000); // 15 seconds
@@ -92,7 +92,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testTimeElapsedLargeDelay()
+	public void testTimeElapsedLargeDelay() throws InterruptedException
 	{
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(20000); // 20 seconds

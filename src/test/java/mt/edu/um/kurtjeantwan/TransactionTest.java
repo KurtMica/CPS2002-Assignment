@@ -65,4 +65,37 @@ public class TransactionTest
 		Transaction trn = new Transaction(1, 3, 5, accountDb);
 		Assert.assertFalse(trn.process());
 	}
+	
+	/* timeElapsed tests */
+	
+	@Test
+	public void testTimeElapsedNoDelay()
+	{
+		Transaction trn = new Transaction(1, 2, 5, accountDb);
+		Assert.assertFalse(trn.timeElapsed());
+	}
+	
+	@Test
+	public void testTimeElapsedSmallDelay()
+	{
+		Transaction trn = new Transaction(1, 2, 5, accountDb);
+		Thread.sleep(5000); // 5 seconds
+		Assert.assertFalse(trn.timeElapsed());
+	}
+	
+	@Test
+	public void testTimeElapsedExactDelay()
+	{
+		Transaction trn = new Transaction(1, 2, 5, accountDb);
+		Thread.sleep(15000); // 15 seconds
+		Assert.assertTrue(trn.timeElapsed());
+	}
+	
+	@Test
+	public void testTimeElapsedLargeDelay()
+	{
+		Transaction trn = new Transaction(1, 2, 5, accountDb);
+		Thread.sleep(20000); // 20 seconds
+		Assert.assertTrue(trn.timeElapsed());
+	}
 }

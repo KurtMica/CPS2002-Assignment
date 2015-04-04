@@ -71,9 +71,14 @@ public class TransactionTest
 	@Test
 	public void testProcessMultipleSuccessDifferentAccounts()
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
 		accountDb.addAccount(4, "Monica");
+		
 		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
 		Transaction trn2 = new Transaction(3, 4, 5, accountDb);
 		trn1.process();
@@ -83,8 +88,13 @@ public class TransactionTest
 	@Test
 	public void testProcessMultipleFailAccountSrc()
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
+		
 		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
 		Transaction trn2 = new Transaction(3, 2, 5, accountDb);
 		trn1.process();
@@ -94,8 +104,13 @@ public class TransactionTest
 	@Test
 	public void testProcessMultipleFailAccountDst()
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
+		
 		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
 		Transaction trn2 = new Transaction(1, 3, 5, accountDb);
 		trn1.process();
@@ -105,6 +120,10 @@ public class TransactionTest
 	@Test
 	public void testProcessMultipleFailSmallDelay() throws InterruptedException
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn1 = new Transaction(1, 2, 2, accountDb);
 		Thread.sleep(5000); // 5 seconds
 		Transaction trn2 = new Transaction(1, 2, 3, accountDb);
@@ -115,6 +134,10 @@ public class TransactionTest
 	@Test
 	public void testProcessMultipleSucessLargeDelay() throws InterruptedException
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn1 = new Transaction(1, 2, 2, accountDb);
 		Thread.sleep(20000); // 20 seconds
 		Transaction trn2 = new Transaction(1, 2, 3, accountDb);
@@ -127,6 +150,10 @@ public class TransactionTest
 	@Test
 	public void testTimeElapsedNoDelay()
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Assert.assertFalse(trn.timeElapsed());
 	}
@@ -134,6 +161,10 @@ public class TransactionTest
 	@Test
 	public void testTimeElapsedSmallDelay() throws InterruptedException
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(5000); // 5 seconds
 		Assert.assertFalse(trn.timeElapsed());
@@ -142,6 +173,10 @@ public class TransactionTest
 	@Test
 	public void testTimeElapsedExactDelay() throws InterruptedException
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(15000); // 15 seconds
 		Assert.assertTrue(trn.timeElapsed());
@@ -150,6 +185,10 @@ public class TransactionTest
 	@Test
 	public void testTimeElapsedLargeDelay() throws InterruptedException
 	{
+		long currentTime = System.currentTimeMillis();
+		accountDb.getAccount(1).setLastUsed(currentTime);
+		accountDb.getAccount(2).setLastUsed(currentTime);
+		
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
 		Thread.sleep(20000); // 20 seconds
 		Assert.assertTrue(trn.timeElapsed());

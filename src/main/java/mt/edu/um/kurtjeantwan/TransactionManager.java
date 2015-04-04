@@ -22,12 +22,22 @@ public class TransactionManager {
     
     public boolean processTransaction(int src, int dst, int amount)
     {
-        return false;
+        Transaction t1 = new Transaction(src, dst, amount, accountDb);
+        if(t1.process())
+        {
+            numTransactionsProcessed++;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
     }
     
     public int getNum()
     {
-        return 1;
+        return numTransactionsProcessed;
     }
     
     

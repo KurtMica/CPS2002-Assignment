@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * This class is used to test the AccountDatabase Class.
+ * This class is used to test the Transaction Class.
  * Before each test, the setup function will be executed. 
  */
 public class TransactionTest
@@ -14,7 +14,7 @@ public class TransactionTest
 	private AccountDatabase accountDb;
 	
 	@Before
-	public void test()
+	public void setup()
 	{
 		accountDb = new AccountDatabase();
 		accountDb.addAccount(1, "Mark");

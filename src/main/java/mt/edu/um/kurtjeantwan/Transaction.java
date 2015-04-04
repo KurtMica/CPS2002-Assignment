@@ -47,8 +47,8 @@ public class Transaction
 	public boolean timeElapsed()
 	{
 		long currentTime = System.currentTimeMillis();
-		if((accountDb.getAccount(sourceAccountNumber).checkLastUsed() - currentTime >= 15)
-				&& (accountDb.getAccount(destinationAccountNumber).checkLastUsed() - currentTime >= 15))
+		if((Math.abs(currentTime - accountDb.getAccount(sourceAccountNumber).checkLastUsed()) >= 15)
+				&& (Math.abs(currentTime - accountDb.getAccount(destinationAccountNumber).checkLastUsed()) >= 15))
 		{
 			return true;
 		}

@@ -32,6 +32,32 @@ public class AccountTest
     	Assert.assertEquals("First", acc1.getName());
     }
     
+    @Test
+    public void testCheckLastUsed()
+    {
+        
+        Assert.assertEquals(0,acc1.checkLastUsed());
+    }
+    
+    @Test
+    public void testSetLastUsedOne()
+    {
+        long currentTime = System.currentTimeMillis();
+        acc1.setLastUsed(currentTime);
+        Assert.assertEquals(currentTime,acc1.checkLastUsed());
+    }
+    
+    @Test
+    public void testSetLastUsedTwo()
+    {
+        long currentTime = System.currentTimeMillis();
+        acc1.setLastUsed(currentTime);
+        Thread.sleep(1000);
+        currentTime = System.currentTimeMillis();
+        Assert.assertEquals(currentTime,acc1.checklastUsed);
+        
+    }
+    
     /* adjustBalance() tests */
     
     @Test

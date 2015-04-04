@@ -48,13 +48,13 @@ public class AccountTest
     }
     
     @Test
-    public void testSetLastUsedTwo()
+    public void testSetLastUsedTwo() throws InterruptedException
     {
         long currentTime = System.currentTimeMillis();
         acc1.setLastUsed(currentTime);
         Thread.sleep(1000);
         currentTime = System.currentTimeMillis();
-        Assert.assertEquals(currentTime,acc1.checklastUsed);
+        Assert.assertEquals(currentTime,acc1.checkLastUsed());
         
     }
     

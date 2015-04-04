@@ -30,6 +30,16 @@ public class Account
     	return accountName;
     }
     
+    public void setLastUsed(long time)
+    {
+        
+    }
+    
+    public int checkLastUsed()
+    {
+        return 0;
+    }
+    
     public boolean adjustBalance(long amount)
     {
         if((amount + accountBalance >= 0))

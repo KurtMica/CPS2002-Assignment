@@ -69,7 +69,7 @@ public class TransactionTest
 	/* process tests with multiple transactions */
 	
 	@Test
-	public void testTimeElapsedSuccessDifferentAccounts()
+	public void testProcessSuccessDifferentAccounts()
 	{
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
@@ -81,7 +81,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testTimeElapsedFailAccountSrc()
+	public void testProcessFailAccountSrc()
 	{
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
@@ -92,7 +92,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testTimeElapsedFailAccountDst()
+	public void testProcessFailAccountDst()
 	{
 		accountDb.addAccount(3, "Michael");
 		accountDb.getAccount(3).adjustBalance(10);
@@ -103,7 +103,7 @@ public class TransactionTest
 	}
 	
 	@Test
-	public void testProcesFailSmallDelay() throws InterruptedException
+	public void testProcessFailSmallDelay() throws InterruptedException
 	{
 		Transaction trn1 = new Transaction(1, 2, 2, accountDb);
 		Thread.sleep(5000); // 5 seconds

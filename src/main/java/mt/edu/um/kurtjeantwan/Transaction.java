@@ -25,13 +25,17 @@ public class Transaction
 		Account src = accountDb.getAccount(sourceAccountNumber);
 		Account dst = accountDb.getAccount(destinationAccountNumber);
 		// check if account exists
-		if(src != null && dst != null)
+		if((src != null && dst != null) && timeElapsed())
 		{
 			// check if there is enough money in source
 			if(src.adjustBalance(-amount))
 			{
 				dst.adjustBalance(amount);
-				return true;
+                                long currentTime = System.currentTimeMillis();
+                                //Modify LastUsed
+                                src.setLastUsed(currentTime);
+                                dst.setLastUsed(currentTime);
+                                return true;
 			}
 			else
 			{

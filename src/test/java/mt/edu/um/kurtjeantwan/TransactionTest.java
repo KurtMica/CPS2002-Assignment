@@ -66,6 +66,62 @@ public class TransactionTest
 		Assert.assertFalse(trn.process());
 	}
 	
+	/* process tests with multiple transactions */
+	
+	@Test
+	public void testTimeElapsedSuccessDifferentAccounts()
+	{
+		accountDb.addAccount(3, "Michael");
+		accountDb.getAccount(3).adjustBalance(10);
+		accountDb.addAccount(4, "Monica");
+		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
+		Transaction trn2 = new Transaction(3, 4, 5, accountDb);
+		trn1.process();
+		Assert.assertTrue(trn2.process());
+	}
+	
+	@Test
+	public void testTimeElapsedFailAccountSrc()
+	{
+		accountDb.addAccount(3, "Michael");
+		accountDb.getAccount(3).adjustBalance(10);
+		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
+		Transaction trn2 = new Transaction(3, 2, 5, accountDb);
+		trn1.process();
+		Assert.assertFalse(trn2.process());
+	}
+	
+	@Test
+	public void testTimeElapsedFailAccountDst()
+	{
+		accountDb.addAccount(3, "Michael");
+		accountDb.getAccount(3).adjustBalance(10);
+		Transaction trn1 = new Transaction(1, 2, 5, accountDb);
+		Transaction trn2 = new Transaction(1, 3, 5, accountDb);
+		trn1.process();
+		Assert.assertFalse(trn2.process());
+	}
+	
+	@Test
+	public void testProcesFailSmallDelay() throws InterruptedException
+	{
+		Transaction trn1 = new Transaction(1, 2, 2, accountDb);
+		Thread.sleep(5000); // 5 seconds
+		Transaction trn2 = new Transaction(1, 2, 3, accountDb);
+		trn1.process();
+		Assert.assertFalse(trn2.process());
+	}
+	
+	@Test
+	public void testProcessSucessLargeDelay() throws InterruptedException
+	{
+		Transaction trn1 = new Transaction(1, 2, 2, accountDb);
+		Thread.sleep(20000); // 20 seconds
+		Transaction trn2 = new Transaction(1, 2, 3, accountDb);
+		trn1.process();
+		Assert.assertTrue(trn2.process());
+	}
+	
 	/* timeElapsed tests */
 	
 	@Test

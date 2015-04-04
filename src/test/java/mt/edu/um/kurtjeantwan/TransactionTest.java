@@ -136,6 +136,7 @@ public class TransactionTest
 	public void testTimeElapsedNoDelay()
 	{
 		Transaction trn = new Transaction(1, 2, 5, accountDb);
+                trn.process();
 		Assert.assertFalse(trn.timeElapsed());
 	}
 	

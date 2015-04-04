@@ -20,5 +20,15 @@ public class TransactionManager {
         accountDb = database;
     }
     
+    public boolean processTransaction(int src, int dst, int amount)
+    {
+        return false;
+    }
+    
+    public int getNum()
+    {
+        return 1;
+    }
+    
     
 }

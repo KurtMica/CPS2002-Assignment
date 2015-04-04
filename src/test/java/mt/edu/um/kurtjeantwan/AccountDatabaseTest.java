@@ -47,7 +47,8 @@ public class AccountDatabaseTest {
     @Test
     public void testDeleteAccountFail()
     {
-        Assert.assertFalse(accountDb.deleteAccount(1));
+        accountDb.addAccount(1, "Michael");
+        Assert.assertFalse(accountDb.deleteAccount(2));
     }
    
     /* validateNumber tests */

@@ -10,7 +10,7 @@ public class Account
 	private int accountNumber;
     private String accountName;
     private long accountBalance;
-    private int lastUsed;
+    private long lastUsed;
     
     protected Account(int num, String Name)
     {
@@ -32,12 +32,12 @@ public class Account
     
     public void setLastUsed(long time)
     {
-        
+        lastUsed = time;
     }
     
-    public int checkLastUsed()
+    public long checkLastUsed()
     {
-        return 0;
+        return lastUsed;
     }
     
     public boolean adjustBalance(long amount)

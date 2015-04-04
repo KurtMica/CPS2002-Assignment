@@ -53,8 +53,8 @@ public class AccountTest
         long currentTime = System.currentTimeMillis();
         acc1.setLastUsed(currentTime);
         Thread.sleep(1000);
-        currentTime = System.currentTimeMillis();
-        Assert.assertEquals(currentTime,acc1.checkLastUsed());
+        long currentTimeNow = System.currentTimeMillis();
+        Assert.assertEquals(currentTimeNow,acc1.checkLastUsed());
         
     }
     

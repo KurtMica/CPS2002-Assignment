@@ -10,24 +10,21 @@ public class AtomicTransaction extends Transaction
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
 	private long amount;
-	private AccountDatabase accountDb;
 	
 	public AtomicTransaction(int source, int destination, int amount, AccountDatabase database)
 	{
-		super("Atomic Transaction");
+		super("Atomic Transaction", database);
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
 		this.amount = amount;
-		accountDb = database;
 	}
         
     public AtomicTransaction(String desc, int source, int destination, int amount, AccountDatabase database)
 	{
-        super(desc);
+        super(desc, database);
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
 		this.amount = amount;
-		accountDb = database;
 	}
 	
 	public boolean process()

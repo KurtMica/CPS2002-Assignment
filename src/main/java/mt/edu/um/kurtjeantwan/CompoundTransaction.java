@@ -10,18 +10,18 @@ public class CompoundTransaction extends Transaction
 	public CompoundTransaction(AccountDatabase database)
 	{
 		super("Compound Transaction", database);
-		subTransaction = new ArrayList<Transaction>();
+		this.subTransaction = new ArrayList<Transaction>();
 	}
         
     public CompoundTransaction(String desc, AccountDatabase database)
 	{
 		super(desc, database);
-		subTransaction = new ArrayList<Transaction>();
+		this.subTransaction = new ArrayList<Transaction>();
 	}
     
-    public void addChild(Transaction transaction)
+    public void addTransaction(Transaction transaction)
     {
-    	
+    	this.subTransaction.add(transaction);
     }
     
     public boolean process()

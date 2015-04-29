@@ -70,13 +70,13 @@ public class CompoundTransactionTest
     public void testTimeElapsedNoDelay()
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
-        trn2 = new AtomicTransaction("second",2,4,5,accountDb);
+        trn2 = new AtomicTransaction("second",3,4,5,accountDb);
         CompoundTransaction trnComp = new CompoundTransaction(); //First Compound Transaction
         CompoundTransaction trnComp2 = new CompoundTransaction(); //Second Compound Transaction
         trnComp.addTransaction(trn1);
         trnComp2.addTransaction(trn2);
         trnComp.process();
-        Assert.assertTrue(trnComp2.process());
+        Assert.assertFalse(trnComp2.process());
     }
     
     @Test

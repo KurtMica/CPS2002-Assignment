@@ -24,6 +24,7 @@ public class AtomicTransaction extends Transaction
     public AtomicTransaction(String desc, int source, int destination, int amount, AccountDatabase database)
 	{
         super(desc);
+                this.accountDb = database;
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
 		this.amount = amount;

@@ -12,7 +12,7 @@ public class AtomicTransaction extends Transaction
 	private long amount;
 	private AccountDatabase accountDb;
 	
-	protected AtomicTransaction(int source, int destination, int amount, AccountDatabase database)
+	public AtomicTransaction(int source, int destination, int amount, AccountDatabase database)
 	{
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
@@ -20,7 +20,7 @@ public class AtomicTransaction extends Transaction
 		accountDb = database;
 	}
         
-        protected AtomicTransaction(String desc,int source, int destination, int amount, AccountDatabase database)
+        public AtomicTransaction(String desc,int source, int destination, int amount, AccountDatabase database)
 	{
                 
 		sourceAccountNumber = source;

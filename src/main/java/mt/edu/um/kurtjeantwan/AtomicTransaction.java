@@ -58,7 +58,7 @@ public class AtomicTransaction extends Transaction
 		}
 	}
 	
-	public boolean timeElapsed()
+	protected boolean timeElapsed()
 	{
 		long currentTime = System.currentTimeMillis();
 		if((Math.abs(currentTime - accountDb.getAccount(sourceAccountNumber).checkLastUsed()) >= 15000)

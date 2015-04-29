@@ -22,7 +22,7 @@ public class TransactionManager {
     
     public boolean processTransaction(int src, int dst, int amount)
     {
-        Transaction t1 = new Transaction(src, dst, amount, accountDb);
+        AtomicTransaction t1 = new AtomicTransaction(src, dst, amount, accountDb);
         if(t1.process())
         {
             numTransactionsProcessed++;

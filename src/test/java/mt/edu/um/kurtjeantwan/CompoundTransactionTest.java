@@ -108,4 +108,11 @@ public class CompoundTransactionTest
         trnComp.addTransaction(trn3);
         Assert.assertTrue(trnComp.process());
     }
+    
+    @Test
+    public void testProcessEmptySubList()
+    {
+        CompoundTransaction trnComp = new CompoundTransaction("Empty");
+        Assert.assertTrue(trnComp.process());
+    }
 }

@@ -5,7 +5,7 @@ package mt.edu.um.kurtjeantwan;
  * Handles the transfer of money between 2 accounts, whilst ensuring that
  * the source Account has enough money as well as that both accounts exist.
  */
-public class AtomicTransaction
+public class AtomicTransaction extends Transaction
 {
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
@@ -14,6 +14,15 @@ public class AtomicTransaction
 	
 	protected AtomicTransaction(int source, int destination, int amount, AccountDatabase database)
 	{
+		sourceAccountNumber = source;
+		destinationAccountNumber = destination;
+		this.amount = amount;
+		accountDb = database;
+	}
+        
+        protected AtomicTransaction(String desc,int source, int destination, int amount, AccountDatabase database)
+	{
+                
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;
 		this.amount = amount;

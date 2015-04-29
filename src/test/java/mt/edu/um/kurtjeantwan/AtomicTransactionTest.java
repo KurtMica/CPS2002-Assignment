@@ -41,7 +41,7 @@ public class AtomicTransactionTest
 	@Test
 	public void testProcessFailAmount()
 	{
-		AtomicTransaction trn = new AtomicTransaction(1, 2, 10, accountDb);
+		AtomicTransaction trn = new AtomicTransaction("Failing",1, 2, 10, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
@@ -55,7 +55,7 @@ public class AtomicTransactionTest
 	@Test
 	public void testProcessFailAccountSrc()
 	{
-		AtomicTransaction trn = new AtomicTransaction(3, 2, 5, accountDb);
+		AtomicTransaction trn = new AtomicTransaction("Failing Source",3, 2, 5, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	

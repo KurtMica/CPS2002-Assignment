@@ -7,15 +7,15 @@ public class CompoundTransaction extends Transaction
 {
 	List<Transaction> subTransactions;
 	
-	public CompoundTransaction(AccountDatabase database)
+	public CompoundTransaction()
 	{
-		super("Compound Transaction", database);
+		super("Compound Transaction");
 		this.subTransactions = new ArrayList<Transaction>();
 	}
         
-    public CompoundTransaction(String desc, AccountDatabase database)
+    public CompoundTransaction(String desc)
 	{
-		super(desc, database);
+		super(desc);
 		this.subTransactions = new ArrayList<Transaction>();
 	}
     

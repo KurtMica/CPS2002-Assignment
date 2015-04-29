@@ -39,7 +39,7 @@ public class CompoundTransactionTest
     {
         trn1 = new AtomicTransaction("first",1,3,4,accountDb);
         trn2 = new AtomicTransaction("second",2,4,1,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
         Assert.assertTrue(trnComp.process());
@@ -51,7 +51,7 @@ public class CompoundTransactionTest
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,4,5,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
         Assert.assertTrue(trnComp.process());
@@ -61,7 +61,7 @@ public class CompoundTransactionTest
     public void testProcessSingleTransFailAmount()
     {
         trn1 = new AtomicTransaction("first",1,3,13,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
         Assert.assertFalse(trnComp.process());
     }
@@ -71,12 +71,12 @@ public class CompoundTransactionTest
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,4,5,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb); //First Compound Transaction
-        CompoundTransaction trnComp2 = new CompoundTransaction(accountDb); //Second Compound Transaction
+        CompoundTransaction trnComp = new CompoundTransaction(); //First Compound Transaction
+        CompoundTransaction trnComp2 = new CompoundTransaction(); //Second Compound Transaction
         trnComp.addTransaction(trn1);
         trnComp2.addTransaction(trn2);
         trnComp.process();
-        Assert.assertFalse(trnComp2.process());
+        Assert.assertTrue(trnComp2.process());
     }
     
     @Test
@@ -84,8 +84,8 @@ public class CompoundTransactionTest
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,4,5,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb); //First Compound Transaction
-        CompoundTransaction trnComp2 = new CompoundTransaction(accountDb); //Second Compound Transaction
+        CompoundTransaction trnComp = new CompoundTransaction(); //First Compound Transaction
+        CompoundTransaction trnComp2 = new CompoundTransaction(); //Second Compound Transaction
         trnComp.addTransaction(trn1);
         trnComp2.addTransaction(trn2);
         trnComp.process();
@@ -102,7 +102,7 @@ public class CompoundTransactionTest
         trn1 = new AtomicTransaction("first",1,3,4,accountDb);
         trn2 = new AtomicTransaction("second",2,4,1,accountDb);
         Transaction trn3 = new AtomicTransaction("third",6,5,7,accountDb);
-        CompoundTransaction trnComp = new CompoundTransaction(accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
         trnComp.addTransaction(trn3);

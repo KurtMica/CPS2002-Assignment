@@ -1,18 +1,18 @@
 package mt.edu.um.kurtjeantwan;
 
 /**
- * This is the Transaction Class.
+ * This is the Atomic Transaction Class.
  * Handles the transfer of money between 2 accounts, whilst ensuring that
  * the source Account has enough money as well as that both accounts exist.
  */
-public class Transaction
+public class AtomicTransaction
 {
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
 	private long amount;
 	private AccountDatabase accountDb;
 	
-	protected Transaction(int source, int destination, int amount, AccountDatabase database)
+	protected AtomicTransaction(int source, int destination, int amount, AccountDatabase database)
 	{
 		sourceAccountNumber = source;
 		destinationAccountNumber = destination;

@@ -57,16 +57,16 @@ public class CompoundTransactionTest
         Assert.assertTrue(trnComp.process());
     }
     
-    @Test
+    @Test(expected = Exception.class)
     public void testProcessSingleTransFailAmount() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,13,accountDb);
         CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
-        Assert.assertFalse(trnComp.process());
+        trnComp.process();
     }
     
-    @Test
+    @Test(expected = Exception.class)
     public void testTimeElapsedNoDelay() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
@@ -76,7 +76,7 @@ public class CompoundTransactionTest
         trnComp.addTransaction(trn1);
         trnComp2.addTransaction(trn2);
         trnComp.process();
-        Assert.assertFalse(trnComp2.process());
+        trnComp2.process();
     }
     
     @Test

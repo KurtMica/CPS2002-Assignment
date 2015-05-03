@@ -10,5 +10,5 @@ public abstract class Transaction
 		this.description = description;
 	}
 	
-	public abstract boolean process();
+	public abstract boolean process() throws Exception;
 }

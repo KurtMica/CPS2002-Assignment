@@ -25,42 +25,42 @@ public class AtomicTransactionTest
 	/* process tests */
 	
 	@Test
-	public void testProcessSucess()
+	public void testProcessSucess() throws Exception
 	{
 		Transaction trn = new AtomicTransaction(1, 2, 3, accountDb);
 		Assert.assertTrue(trn.process());
 	}
 	
 	@Test
-	public void testProcessSucessBound()
+	public void testProcessSucessBound() throws Exception
 	{
 		Transaction trn = new AtomicTransaction(1, 2, 5, accountDb);
 		Assert.assertTrue(trn.process());
 	}
 	
 	@Test
-	public void testProcessFailAmount()
+	public void testProcessFailAmount() throws Exception
 	{
 		Transaction trn = new AtomicTransaction("Failing",1, 2, 10, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
-	public void testProcessFailAmountBound()
+	public void testProcessFailAmountBound() throws Exception
 	{
 		Transaction trn = new AtomicTransaction(1, 2, 6, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
-	public void testProcessFailAccountSrc()
+	public void testProcessFailAccountSrc() throws Exception
 	{
 		Transaction trn = new AtomicTransaction("Failing Source",3, 2, 5, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
-	public void testProcessFailAccountDst()
+	public void testProcessFailAccountDst() throws Exception
 	{
 		Transaction trn = new AtomicTransaction(1, 3, 5, accountDb);
 		Assert.assertFalse(trn.process());
@@ -69,7 +69,7 @@ public class AtomicTransactionTest
 	/* process tests with multiple transactions */
 	
 	@Test
-	public void testProcessMultipleSuccessDifferentAccounts()
+	public void testProcessMultipleSuccessDifferentAccounts() throws Exception
 	{
 		
 		accountDb.addAccount(3, "Michael");
@@ -83,7 +83,7 @@ public class AtomicTransactionTest
 	}
 	
 	@Test
-	public void testProcessMultipleFailAccountSrc()
+	public void testProcessMultipleFailAccountSrc() throws Exception
 	{
 		
 		accountDb.addAccount(3, "Michael");
@@ -96,7 +96,7 @@ public class AtomicTransactionTest
 	}
 	
 	@Test
-	public void testProcessMultipleFailAccountDst()
+	public void testProcessMultipleFailAccountDst() throws Exception
 	{
 		
 		accountDb.addAccount(3, "Michael");
@@ -109,7 +109,7 @@ public class AtomicTransactionTest
 	}
 	
 	@Test
-	public void testProcessMultipleFailSmallDelay() throws InterruptedException
+	public void testProcessMultipleFailSmallDelay() throws Exception
 	{
 		
 		Transaction trn1 = new AtomicTransaction(1, 2, 2, accountDb);
@@ -120,7 +120,7 @@ public class AtomicTransactionTest
 	}
 	
 	@Test
-	public void testProcessMultipleSucessLargeDelay() throws InterruptedException
+	public void testProcessMultipleSucessLargeDelay() throws Exception
 	{
 		
 		Transaction trn1 = new AtomicTransaction(1, 2, 2, accountDb);

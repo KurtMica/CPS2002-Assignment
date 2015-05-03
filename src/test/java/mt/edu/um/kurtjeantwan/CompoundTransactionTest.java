@@ -35,7 +35,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testProcessSucess()
+    public void testProcessSucess() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,4,accountDb);
         trn2 = new AtomicTransaction("second",2,4,1,accountDb);
@@ -47,7 +47,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testProcessSuccessBound()
+    public void testProcessSuccessBound() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,4,5,accountDb);
@@ -58,7 +58,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testProcessSingleTransFailAmount()
+    public void testProcessSingleTransFailAmount() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,13,accountDb);
         CompoundTransaction trnComp = new CompoundTransaction();
@@ -67,7 +67,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testTimeElapsedNoDelay()
+    public void testTimeElapsedNoDelay() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",3,4,5,accountDb);
@@ -80,7 +80,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testTimeElapsedExactDelay() throws InterruptedException
+    public void testTimeElapsedExactDelay() throws Exception
     {
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,4,5,accountDb);
@@ -94,7 +94,7 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testProcessSuccessMultipleTrans()
+    public void testProcessSuccessMultipleTrans() throws Exception
     {
         accountDb.addAccount(5, "Saviour");
         accountDb.addAccount(6, "Nick");
@@ -110,9 +110,25 @@ public class CompoundTransactionTest
     }
     
     @Test
-    public void testProcessEmptySubList()
+    public void testProcessEmptySubList() throws Exception
     {
         CompoundTransaction trnComp = new CompoundTransaction("Empty");
-        Assert.assertTrue(trnComp.process());
+        Assert.assertFalse(trnComp.process());
     }
+    
+    @Test(expected = Exception.class)
+    public void testProcessFalse() throws Exception{
+        
+        trn1 = new AtomicTransaction("first",1,3,10,accountDb);
+        trn2 = new AtomicTransaction("second",2,3,5,accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
+        trnComp.addTransaction(trn1);
+        trnComp.addTransaction(trn2);
+        trnComp.process(); //Exception thrown here
+        
+        
+    }
+    
+    
+   
 }

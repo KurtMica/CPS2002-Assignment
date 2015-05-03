@@ -24,17 +24,17 @@ public class CompoundTransaction extends Transaction
     	this.subTransactions.add(transaction);
     }
     
-    public boolean process()
+    public boolean process() throws Exception
     {
     	// empty CompoundTransaction
     	if(this.subTransactions.isEmpty())
-    		return true;
+    		return false;
     	
     	// iterate all sub-transactions
     	for(Transaction trn : this.subTransactions)
     		// check if any of the sub-transactions & notify accordingly
     		if(!trn.process())
-    			return false;
+    			throw new Exception("Failed Atomic Transaction");
     	return true;
     }
 }

@@ -43,7 +43,7 @@ public class TransactionManagerTest {
     }
     
     @Test
-    public void testProcessAtomicNotRoot() throws Exception
+    public void testProcessTransactionAtomicNotRoot() throws Exception
     {
     	AtomicTransaction trn1 = new AtomicTransaction("first",1,3,10,accountDb);
     	AtomicTransaction trn2 = new AtomicTransaction("second",2,4,5,accountDb);
@@ -54,7 +54,7 @@ public class TransactionManagerTest {
     }
     
     @Test
-    public void testProcessCompundNotRoot() throws Exception
+    public void testProcessTransactionCompundNotRoot() throws Exception
     {
 		accountDb.addAccount(3, "Michael");
 		accountDb.addAccount(4, "Monica");
@@ -66,5 +66,17 @@ public class TransactionManagerTest {
         CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trnCompChild);
         Assert.assertFalse(tm1.processTransaction(trnCompChild));
+    }
+    
+    public void testProcessTransactionObjectFail() throws Exception
+    {
+    	Transaction trn = new AtomicTransaction(1, 2, 10, accountDb);
+    	Assert.assertFalse(tm1.processTransaction(trn));
+    }
+    
+    public void testProcessTransactionObjectSuccess() throws Exception
+    {
+    	AtomicTransaction trn = new AtomicTransaction(2, 1, 5, accountDb);
+    	Assert.assertFalse(tm1.processTransaction(trn));
     }
 }

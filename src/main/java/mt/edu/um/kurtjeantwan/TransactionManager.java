@@ -25,7 +25,7 @@ public class TransactionManager {
         AtomicTransaction t1 = new AtomicTransaction(src, dst, amount, accountDb);
         if(t1.process())
         {
-            numTransactionsProcessed++;
+            this.numTransactionsProcessed++;
             return true;
         }
         else
@@ -38,9 +38,18 @@ public class TransactionManager {
     {
     	if(!transaction.isRoot)
     		return false;
+    	
     	try
     	{
-			return transaction.process();
+			if(transaction.process())
+			{
+				this.numTransactionsProcessed++;
+				return true;
+    		}
+			else
+			{
+				return false;
+			}
 		}
     	catch (Exception e)
     	{

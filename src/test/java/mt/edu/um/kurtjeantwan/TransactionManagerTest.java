@@ -50,7 +50,7 @@ public class TransactionManagerTest {
         CompoundTransaction trnComp = new CompoundTransaction();
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
-        Assert.assertFalse(trn1.process());
+        Assert.assertFalse(tm1.processTransaction(trn1));
     }
     
     @Test
@@ -68,15 +68,17 @@ public class TransactionManagerTest {
         Assert.assertFalse(tm1.processTransaction(trnCompChild));
     }
     
+    @Test
     public void testProcessTransactionObjectFail() throws Exception
     {
     	Transaction trn = new AtomicTransaction(1, 2, 10, accountDb);
     	Assert.assertFalse(tm1.processTransaction(trn));
     }
     
+    @Test
     public void testProcessTransactionObjectSuccess() throws Exception
     {
     	AtomicTransaction trn = new AtomicTransaction(1, 2, 5, accountDb);
-    	Assert.assertFalse(tm1.processTransaction(trn));
+    	Assert.assertTrue(tm1.processTransaction(trn));
     }
 }

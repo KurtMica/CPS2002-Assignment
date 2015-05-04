@@ -117,7 +117,8 @@ public class CompoundTransactionTest
     }
     
     @Test(expected = Exception.class)
-    public void testProcessFalse() throws Exception{
+    public void testProcessFalse() throws Exception
+    {
         
         trn1 = new AtomicTransaction("first",1,3,10,accountDb);
         trn2 = new AtomicTransaction("second",2,3,5,accountDb);
@@ -125,10 +126,29 @@ public class CompoundTransactionTest
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
         trnComp.process(); //Exception thrown here
-        
-        
     }
     
+    @Test
+    public void testProcessAtomicNotRoot() throws Exception
+    {
+        trn1 = new AtomicTransaction("first",1,3,10,accountDb);
+        trn2 = new AtomicTransaction("second",2,4,5,accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
+        trnComp.addTransaction(trn1);
+        trnComp.addTransaction(trn2);
+        Assert.assertFalse(trn1.process());
+    }
     
-   
+    @Test
+    public void testProcessCompundNotRoot() throws Exception
+    {
+        trn1 = new AtomicTransaction("first",1,3,10,accountDb);
+        trn2 = new AtomicTransaction("second",2,4,5,accountDb);
+        CompoundTransaction trnCompChild = new CompoundTransaction();
+        trnCompChild.addTransaction(trn1);
+        trnCompChild.addTransaction(trn2);
+        CompoundTransaction trnComp = new CompoundTransaction();
+        trnComp.addTransaction(trnCompChild);
+        Assert.assertFalse(trnCompChild.process());
+    }
 }

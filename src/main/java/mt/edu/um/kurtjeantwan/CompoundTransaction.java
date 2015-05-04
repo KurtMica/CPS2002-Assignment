@@ -25,7 +25,7 @@ public class CompoundTransaction extends Transaction
     	transaction.isRoot = false;
     }
     
-    public boolean process() throws Exception
+    protected boolean process() throws Exception
     {
     	// empty CompoundTransaction
     	if(this.subTransactions.isEmpty())

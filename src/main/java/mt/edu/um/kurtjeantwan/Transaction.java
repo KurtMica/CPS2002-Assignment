@@ -11,5 +11,5 @@ public abstract class Transaction
 		this.isRoot = true;
 	}
 	
-	public abstract boolean process() throws Exception;
+	protected abstract boolean process() throws Exception;
 }

@@ -30,7 +30,7 @@ public class AtomicTransaction extends Transaction
 		this.amount = amount;
 	}
 	
-	public boolean process()
+    protected boolean process()
 	{
 		Account src = accountDb.getAccount(sourceAccountNumber);
 		Account dst = accountDb.getAccount(destinationAccountNumber);

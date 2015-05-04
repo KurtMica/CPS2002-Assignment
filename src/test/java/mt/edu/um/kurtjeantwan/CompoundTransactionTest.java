@@ -109,11 +109,11 @@ public class CompoundTransactionTest
         Assert.assertTrue(trnComp.process());
     }
     
-    @Test
+    @Test(expected = Exception.class)
     public void testProcessEmptySubList() throws Exception
     {
         CompoundTransaction trnComp = new CompoundTransaction("Empty");
-        Assert.assertFalse(trnComp.process());
+        trnComp.process();
     }
     
     @Test(expected = Exception.class)

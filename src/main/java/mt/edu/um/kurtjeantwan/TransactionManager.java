@@ -32,13 +32,24 @@ public class TransactionManager {
         {
             return false;
         }
-        
+    }
+    
+    public boolean processTransaction(Transaction transaction)
+    {
+    	if(!transaction.isRoot)
+    		return false;
+    	try
+    	{
+			return transaction.process();
+		}
+    	catch (Exception e)
+    	{
+			return false;
+		}	
     }
     
     public int getNum()
     {
         return numTransactionsProcessed;
     }
-    
-    
 }

@@ -29,13 +29,13 @@ public class CompoundTransaction extends Transaction
     {
     	// empty CompoundTransaction
     	if(this.subTransactions.isEmpty())
-    		return false;
+    		throw new Exception("Failed Sub-Transaction");
     	
     	// iterate all sub-transactions
     	for(Transaction trn : this.subTransactions)
     		// check if any of the sub-transactions & notify accordingly
     		if(!trn.process())
-    			throw new Exception("Failed Atomic Transaction");
+    			throw new Exception("Failed Sub-Transaction");
     	return true;
     }
 }

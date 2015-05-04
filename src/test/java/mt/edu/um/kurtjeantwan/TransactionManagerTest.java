@@ -76,7 +76,7 @@ public class TransactionManagerTest {
     
     public void testProcessTransactionObjectSuccess() throws Exception
     {
-    	AtomicTransaction trn = new AtomicTransaction(2, 1, 5, accountDb);
+    	AtomicTransaction trn = new AtomicTransaction(1, 2, 5, accountDb);
     	Assert.assertFalse(tm1.processTransaction(trn));
     }
 }

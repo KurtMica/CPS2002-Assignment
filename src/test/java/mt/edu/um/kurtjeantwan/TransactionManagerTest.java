@@ -81,4 +81,14 @@ public class TransactionManagerTest {
     	AtomicTransaction trn = new AtomicTransaction(1, 2, 5, accountDb);
     	Assert.assertTrue(tm1.processTransaction(trn));
     }
+    
+    @Test
+    public void testProcessTransactionObjectException() throws Exception
+    {
+    	AtomicTransaction trn = new AtomicTransaction(1, 2, 5, accountDb);
+    	CompoundTransaction compTrn = new CompoundTransaction();
+    	compTrn.addTransaction(trn);
+    	compTrn.addTransaction(trn);
+    	Assert.assertFalse(tm1.processTransaction(compTrn));
+    }
 }

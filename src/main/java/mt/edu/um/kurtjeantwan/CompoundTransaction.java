@@ -22,6 +22,7 @@ public class CompoundTransaction extends Transaction
     public void addTransaction(Transaction transaction)
     {
     	this.subTransactions.add(transaction);
+    	transaction.isRoot = false;
     }
     
     public boolean process() throws Exception

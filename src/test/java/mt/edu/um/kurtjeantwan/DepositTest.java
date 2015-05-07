@@ -58,6 +58,6 @@ public class DepositTest
 		Transaction trn1 = new Deposit("Failing Source", 0, 5, accountDb, Risk.high);
 		Transaction trn2 = new Deposit("Failing Source", 0, 5, accountDb, Risk.high);
 		trn1.process();
-		Assert.assertFalse(trn2.process());
+		Assert.assertTrue(trn2.process());
 	}
 }

@@ -18,7 +18,7 @@ public class AtomicTransactionTest
 	{
 		accountDb = new AccountDatabase();
 		accountDb.addAccount(1, "Mark");
-		accountDb.getAccount(1).adjustBalance(5);
+		accountDb.getAccount(1).adjustBalance(50);
 		accountDb.addAccount(2, "Mary");
 	}
 	
@@ -41,14 +41,14 @@ public class AtomicTransactionTest
 	@Test
 	public void testProcessFailAmount() throws Exception
 	{
-		Transaction trn = new AtomicTransaction("Failing",1, 2, 10, accountDb);
+		Transaction trn = new AtomicTransaction("Failing",1, 2, 60, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
 	@Test
 	public void testProcessFailAmountBound() throws Exception
 	{
-		Transaction trn = new AtomicTransaction(1, 2, 6, accountDb);
+		Transaction trn = new AtomicTransaction(1, 2, 51, accountDb);
 		Assert.assertFalse(trn.process());
 	}
 	
@@ -92,7 +92,7 @@ public class AtomicTransactionTest
 		Transaction trn1 = new AtomicTransaction(1, 2, 5, accountDb);
                 trn1.process();
 		Transaction trn2 = new AtomicTransaction(3, 2, 5, accountDb);
-		Assert.assertFalse(trn2.process());
+		Assert.assertTrue(trn2.process());
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class AtomicTransactionTest
 		Transaction trn1 = new AtomicTransaction(1, 2, 5, accountDb);
                 trn1.process();
 		Transaction trn2 = new AtomicTransaction(1, 3, 5, accountDb);
-		Assert.assertFalse(trn2.process());
+		Assert.assertTrue(trn2.process());
 	}
 	
 	@Test
@@ -116,7 +116,7 @@ public class AtomicTransactionTest
                 trn1.process();
 		Thread.sleep(5000); // 5 seconds
 		Transaction trn2 = new AtomicTransaction(1, 2, 3, accountDb);
-		Assert.assertFalse(trn2.process());
+		Assert.assertTrue(trn2.process());
 	}
 	
 	@Test

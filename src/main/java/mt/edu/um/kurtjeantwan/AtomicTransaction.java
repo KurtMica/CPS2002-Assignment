@@ -35,9 +35,10 @@ public class AtomicTransaction extends Transaction
 		Account src = accountDb.getAccount(sourceAccountNumber);
 		Account dst = accountDb.getAccount(destinationAccountNumber);
 		// check if account exists
-                while(!timeElapsed());
+                
 		if((src != null && dst != null))
 		{
+                        while(!timeElapsed());
 			// check if there is enough money in source
 			if(src.adjustBalance(-amount))
 			{
@@ -53,10 +54,11 @@ public class AtomicTransaction extends Transaction
 				return false;
 			}
 		}
-		else
+                else
 		{
 			return false;
 		}
+             
 	}
 	
 	protected boolean timeElapsed()

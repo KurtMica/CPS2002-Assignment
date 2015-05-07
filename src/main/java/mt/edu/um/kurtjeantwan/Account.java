@@ -9,7 +9,7 @@ public class Account
 {
     private int accountNumber;
     private String accountName;
-    private long accountBalance;
+    private double accountBalance;
     private long lastUsed;
     
     protected Account(int num, String Name)
@@ -53,7 +53,7 @@ public class Account
         }
     }
     
-    public long checkBalance()
+    public double checkBalance()
     {
     	return accountBalance;
     }

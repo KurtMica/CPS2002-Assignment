@@ -9,26 +9,54 @@ public class Commision extends CompoundTransaction{
     
     private Risk risk;
     
-    public Commision(double amount, AccountDatabase database,Risk ris ){
+    public Commision(double amount, AccountDatabase database,Risk risk )
+    {
     
         super("Commision");
-        
+        this.risk = risk;
+        this.subTransactions.add(new AtomicTransaction(getSource(),getDestination(),computeAmount(amount),database));
     
     }
     
  
-    public int getSource(){
+    public int getSource()
+    {
+        
+        if(this.risk == Risk.high){
+        
+            return 6565;
+        
+        } else {
+        
+            return 6588;
+        }
     
-        return 1;
+        
     }
     
-    public int getDestination(){
-        return 1;
+    public int getDestination()
+    {
+        
+        if(this.risk == Risk.high){
+        
+            return 4444;
+        
+        } else {
+        
+            return 4445;
+        }
     }
     
-    public double computeAmount(){
+    public double computeAmount(double amount){
     
-        return 1;
+        if(this.risk == Risk.high){
+        
+            return 0.1*amount;
+        
+        } else {
+        
+            return 0.05*amount;
+        }
     }
     
 }

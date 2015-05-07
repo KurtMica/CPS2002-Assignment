@@ -2,7 +2,7 @@ package mt.edu.um.kurtjeantwan;
 
 import org.junit.Test;
 import org.junit.Before;
-import org.junit.Assert;
+import junit.framework.Assert;
 
 /**
  * This class is used to test the Account Class.
@@ -84,14 +84,14 @@ public class AccountTest
     @Test
     public void testCheckBalance()
     {
-    	Assert.assertEquals(0, acc1.checkBalance());
+    	Assert.assertEquals(0.0, acc1.checkBalance());
     }
     
     @Test
     public void testCheckBalanceChangedUp()
     {
     	acc1.adjustBalance(5);
-    	Assert.assertEquals(5, acc1.checkBalance());
+    	Assert.assertEquals(5.0, acc1.checkBalance());
     }
     
     @Test
@@ -99,7 +99,7 @@ public class AccountTest
     {
     	acc1.adjustBalance(5);
     	acc1.adjustBalance(-2);
-    	Assert.assertEquals(3, acc1.checkBalance());
+    	Assert.assertEquals(3.0, acc1.checkBalance());
     }
     
     @Test
@@ -107,6 +107,6 @@ public class AccountTest
     {
     	acc1.adjustBalance(5);
     	acc1.adjustBalance(2);
-    	Assert.assertEquals(7, acc1.checkBalance());
+    	Assert.assertEquals(7.0, acc1.checkBalance());
     }
 }

@@ -30,7 +30,7 @@ public class DepositTest
 		AtomicTransaction deposit = new Deposit(0, 10, accountDb, Risk.high);
 		deposit.process();
 		
-		Assert.assertEquals(90, accountDb.getAccount(3123).checkBalance());
+		Assert.assertEquals(90.0, accountDb.getAccount(3123).checkBalance());
 	}
 	
 	@Test
@@ -39,7 +39,7 @@ public class DepositTest
 		AtomicTransaction deposit = new Deposit(0, 20, accountDb, Risk.low);
 		deposit.process();
 		
-		Assert.assertEquals(80, accountDb.getAccount(8665).checkBalance());
+		Assert.assertEquals(80.0, accountDb.getAccount(8665).checkBalance());
 	}
 	
 	@Test

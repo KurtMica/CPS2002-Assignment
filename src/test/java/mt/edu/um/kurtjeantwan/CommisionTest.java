@@ -39,7 +39,7 @@ public class CommisionTest {
         CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
         commision.process();
         
-        Assert.assertEquals(97, accountDb.getAccount(6565).checkBalance());
+        Assert.assertEquals(97.0, accountDb.getAccount(6565).checkBalance());
        
     }
     
@@ -50,7 +50,7 @@ public class CommisionTest {
         CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
         commision.process();
         
-        Assert.assertEquals(3, accountDb.getAccount(4444).checkBalance());
+        Assert.assertEquals(3., accountDb.getAccount(4444).checkBalance());
        
     }
     
@@ -60,7 +60,7 @@ public class CommisionTest {
     public void testSourceProcessSuccessLow() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
+        CompoundTransaction commision = new Commision(30, accountDb, Risk.low);
         commision.process();
         
         Assert.assertEquals(98.5, accountDb.getAccount(6588).checkBalance());
@@ -72,10 +72,10 @@ public class CommisionTest {
     public void testDestProcessSuccessLow() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
+        CompoundTransaction commision = new Commision(30, accountDb, Risk.low);
         commision.process();
         
-        Assert.assertEquals(1.5, accountDb.getAccount(4444).checkBalance());
+        Assert.assertEquals(1.5, accountDb.getAccount(4445).checkBalance());
        
     }
     
@@ -84,32 +84,6 @@ public class CommisionTest {
     
     
     
-    @Test
-    public void testProcessMultipleSuccess() throws Exception
-    {
-    
-        Transaction trn1 = new Commision(40, accountDb, Risk.high);
-        trn1.process();
-        Thread.sleep(20000);
-        
-        Transaction trn2 = new Commision(20, accountDb, Risk.high);
-        Assert.assertTrue(trn2.process());
-    
-    
-    }
-    
-    @Test
-    public void testProcessMultipleFail() throws Exception
-    {
-    
-        Transaction trn1 = new Commision(40, accountDb, Risk.high);
-        trn1.process();
-        
-        Transaction trn2 = new Commision(20, accountDb, Risk.high);
-        Assert.assertFalse(trn2.process());
-    
-    
-    }
             
  
     

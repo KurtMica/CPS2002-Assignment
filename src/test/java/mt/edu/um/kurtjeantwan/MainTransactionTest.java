@@ -70,7 +70,7 @@ public class MainTransactionTest {
     
     
     @Test
-    public void testTransactionsSuccess()
+    public void testTransactionsSuccess() throws Exception
     {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         trn1.addTransactions(destinations,amounts);
@@ -81,7 +81,7 @@ public class MainTransactionTest {
     
     
     @Test
-    public void testTransactionsFail()
+    public void testTransactionsFail() throws Exception
     {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         destinations.add(4); //added extra destination
@@ -92,7 +92,7 @@ public class MainTransactionTest {
     
       
     @Test
-    public void testDeposits()
+    public void testDeposits() throws Exception
     {
     
     MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
@@ -106,7 +106,7 @@ public class MainTransactionTest {
     
     
     @Test
-    public void testCommision()
+    public void testCommision() throws Exception
     {
         
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
@@ -119,7 +119,7 @@ public class MainTransactionTest {
     
     
     @Test
-    public void testMainSource()
+    public void testMainSource() throws Exception
     {
     
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);

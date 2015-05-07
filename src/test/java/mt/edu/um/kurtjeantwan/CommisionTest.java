@@ -36,7 +36,8 @@ public class CommisionTest {
     public void testSourceProcessSuccessHigh() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
+        Commision commision = new Commision(accountDb, Risk.high);
+        commision.addCommision(30.0);
         commision.process();
         
         Assert.assertEquals(97.0, accountDb.getAccount(6565).checkBalance());
@@ -47,7 +48,8 @@ public class CommisionTest {
     public void testDestProcessSuccessHigh() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.high);
+        Commision commision = new Commision(accountDb, Risk.high);
+        commision.addCommision(30.0);
         commision.process();
         
         Assert.assertEquals(3., accountDb.getAccount(4444).checkBalance());
@@ -60,7 +62,8 @@ public class CommisionTest {
     public void testSourceProcessSuccessLow() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.low);
+        Commision commision = new Commision(accountDb, Risk.low);
+        commision.addCommision(30.0);
         commision.process();
         
         Assert.assertEquals(98.5, accountDb.getAccount(6588).checkBalance());
@@ -72,7 +75,8 @@ public class CommisionTest {
     public void testDestProcessSuccessLow() throws Exception
     {
     
-        CompoundTransaction commision = new Commision(30, accountDb, Risk.low);
+        Commision commision = new Commision(accountDb, Risk.low);
+        commision.addCommision(30.0);
         commision.process();
         
         Assert.assertEquals(1.5, accountDb.getAccount(4445).checkBalance());

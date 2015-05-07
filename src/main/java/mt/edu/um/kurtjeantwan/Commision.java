@@ -7,14 +7,16 @@ package mt.edu.um.kurtjeantwan;
  */
 public class Commision extends CompoundTransaction{
     
+    private AccountDatabase database;
     private Risk risk;
     
-    public Commision(double amount, AccountDatabase database,Risk risk )
+    protected Commision( AccountDatabase database,Risk risk )
     {
     
         super("Commision");
         this.risk = risk;
-        this.subTransactions.add(new AtomicTransaction(getSource(),getDestination(),computeAmount(amount),database));
+        this.database = database;
+        
     
     }
     
@@ -47,7 +49,8 @@ public class Commision extends CompoundTransaction{
         }
     }
     
-    public double computeAmount(double amount){
+    public double computeAmount(double amount)
+    {
     
         if(this.risk == Risk.high){
         
@@ -57,6 +60,12 @@ public class Commision extends CompoundTransaction{
         
             return 0.05*amount;
         }
+    }
+    
+    public void addCommision(double amount)
+    {
+        this.subTransactions.add(new AtomicTransaction(getSource(),getDestination(),computeAmount(amount),database));    
+    
     }
     
 }

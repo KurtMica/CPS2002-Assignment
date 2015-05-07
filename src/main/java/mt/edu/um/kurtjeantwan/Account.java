@@ -7,7 +7,7 @@ package mt.edu.um.kurtjeantwan;
 
 public class Account 
 {
-	private int accountNumber;
+    private int accountNumber;
     private String accountName;
     private long accountBalance;
     private long lastUsed;
@@ -40,7 +40,7 @@ public class Account
         return lastUsed;
     }
     
-    public boolean adjustBalance(long amount)
+    public boolean adjustBalance(double amount)
     {
         if((amount + accountBalance >= 0))
         {

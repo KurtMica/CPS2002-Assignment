@@ -4,13 +4,13 @@ public class Deposit extends AtomicTransaction
 {
 	private Risk risk;
 	
-	public Deposit(int destination, int amount, AccountDatabase database, Risk risk)
+	public Deposit(int destination, double amount, AccountDatabase database, Risk risk)
 	{
 		super("Deposit", getSource(risk), destination, amount, database);
 		this.risk = risk;
 	}
 	
-	public Deposit(String description, int destination, int amount, AccountDatabase database, Risk risk)
+	public Deposit(String description, int destination, double amount, AccountDatabase database, Risk risk)
 	{
 		super("Deposit: "+description, getSource(risk), destination, amount, database);
 		this.risk = risk;

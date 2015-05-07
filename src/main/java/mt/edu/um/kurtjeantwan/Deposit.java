@@ -18,6 +18,9 @@ public class Deposit extends AtomicTransaction
 
 	private static int getSource(Risk risk)
 	{
-		return -1;
+		if(risk == Risk.high)
+			return 3123;
+		else
+			return 8665;
 	}
 }

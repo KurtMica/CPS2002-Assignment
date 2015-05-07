@@ -15,4 +15,9 @@ public class Deposit extends AtomicTransaction
 		super("Deposit: "+description, getSource(risk), destination, amount, database);
 		this.risk = risk;
 	}
+
+	private static int getSource(Risk risk)
+	{
+		return -1;
+	}
 }

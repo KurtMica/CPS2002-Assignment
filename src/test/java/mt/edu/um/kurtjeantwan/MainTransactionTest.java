@@ -70,25 +70,26 @@ public class MainTransactionTest {
     
     
     @Test
-    public void testTransactionsSuccess() throws Exception
+    public void testAddTransactionsSuccess() throws Exception
     {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
-        trn1.addTransactions(destinations,amounts);
-        Assert.assertTrue(trn1.process());
-    
-    
+        
+        Assert.assertTrue(trn1.addTransactions(destinations,amounts));
+        
     }
     
     
     @Test
-    public void testTransactionsFail() throws Exception
+    public void testAddTransactionsFail() throws Exception
     {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         destinations.add(4); //added extra destination
-        trn1.addTransactions(destinations,amounts);
-        Assert.assertFalse(trn1.process());
+        
+        Assert.assertFalse(trn1.addTransactions(destinations,amounts));
         
     }
+    
+    
     
       
     @Test
@@ -99,7 +100,7 @@ public class MainTransactionTest {
     trn1.addTransactions(destinations,amounts);
     trn1.process();
     
-    Assert.assertEquals(69.7, accountDb.getAccount(3123).checkBalance());
+    Assert.assertEquals(86.7, accountDb.getAccount(3123).checkBalance());
      
     
     }
@@ -112,7 +113,7 @@ public class MainTransactionTest {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         trn1.addTransactions(destinations,amounts);
         trn1.process();
-        Assert.assertEquals(93.89, accountDb.getAccount(6565).checkBalance());
+        Assert.assertEquals(93.35, accountDb.getAccount(6565).checkBalance());
         
         
     }
@@ -125,7 +126,7 @@ public class MainTransactionTest {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         trn1.addTransactions(destinations,amounts);
         trn1.process();
-        Assert.assertEquals(26.85, accountDb.getAccount(3143).checkBalance());
+        Assert.assertEquals(46.8, Math.round(accountDb.getAccount(3143).checkBalance()*100.00)/100.00);
     
     }
     

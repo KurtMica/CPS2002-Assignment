@@ -35,7 +35,8 @@ public class AtomicTransaction extends Transaction
 		Account src = accountDb.getAccount(sourceAccountNumber);
 		Account dst = accountDb.getAccount(destinationAccountNumber);
 		// check if account exists
-		if((src != null && dst != null) && timeElapsed())
+                while(!timeElapsed());
+		if((src != null && dst != null))
 		{
 			// check if there is enough money in source
 			if(src.adjustBalance(-amount))

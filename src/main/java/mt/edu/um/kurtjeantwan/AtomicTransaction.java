@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Handles the transfer of money between 2 accounts, whilst ensuring that
  * the source Account has enough money as well as that both accounts exist.
  */
-public class AtomicTransaction extends Transaction
+public class AtomicTransaction extends Transaction implements Comparable<AtomicTransaction>
 {
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
@@ -81,5 +81,20 @@ public class AtomicTransaction extends Transaction
             List<AtomicTransaction> out = new ArrayList();
             out.add(this);
             return out;
+        }
+        
+        
+        public int getSource(){
+        
+            return this.sourceAccountNumber;
+        }
+        
+        
+        
+        @Override
+        public int compareTo(AtomicTransaction other)
+        {
+            return (int) (this.amount - other.amount);
+        
         }
 }

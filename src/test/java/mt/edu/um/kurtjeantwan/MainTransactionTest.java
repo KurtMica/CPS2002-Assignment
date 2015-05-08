@@ -212,7 +212,7 @@ public class MainTransactionTest {
         test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
         test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
         
-        Assert.assertEquals(test, main.getTransactionAscend());
+        Assert.assertEquals(test, main.getTransectionAscend());
         
     
     
@@ -253,7 +253,7 @@ public class MainTransactionTest {
         test.add(new Deposit(3,2.1,accountDb,Risk.high));
         
         
-        Assert.assertEquals(test, main.getTransactionDesc());
+        Assert.assertEquals(test, main.getTransectionDescend());
        
     }
     
@@ -282,7 +282,7 @@ public class MainTransactionTest {
         
         test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
         
-        Assert.assertEquals(test, main.getTransactionFilter(6565));
+        Assert.assertEquals(test, main.getTransectionFilter(6565));
         
         
     

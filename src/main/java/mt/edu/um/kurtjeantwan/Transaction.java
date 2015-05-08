@@ -1,5 +1,6 @@
 package mt.edu.um.kurtjeantwan;
 import java.util.List;
+import java.util.ArrayList;
 
 public abstract class Transaction
 {
@@ -15,4 +16,42 @@ public abstract class Transaction
 	protected abstract boolean process() throws Exception;
         
         protected abstract List<AtomicTransaction> getTransaction();
+        
+        public List<AtomicTransaction> getTransectionAscend()
+        {
+            List<AtomicTransaction> out = new ArrayList();
+            /*
+            out = this.getTransaction();
+            Collections.sort(out);*/
+            return out;  
+            
+        
+        }
+        
+        public List<AtomicTransaction> getTransectionDescend()
+        {
+            List<AtomicTransaction> out = new ArrayList();
+            
+            //out = this.getTransectionsAscend();
+            //Collections.reverse(out);
+            
+            return out;
+              
+        }
+        
+        public List<AtomicTransaction> getTransectionFilter(int src)
+        {
+            List<AtomicTransaction> out = new ArrayList();
+            
+            /*for(AtomicTransaction i : this.getTransectionAscend())
+            {
+            
+                if(i.getSource() == src)
+                {
+                    out.add(i);                
+                }
+                       
+            }*/
+            return out;       
+        }
 }

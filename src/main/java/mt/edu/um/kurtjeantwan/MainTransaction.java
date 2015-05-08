@@ -77,8 +77,8 @@ public class MainTransaction extends CompoundTransaction {
     public List<AtomicTransaction>getTransaction()
     {
         List<AtomicTransaction> out = new ArrayList();
-        //out = super.getTransaction();
-        //out.addAll(this.commision.getTransaction());
+        out = super.getTransaction();
+        out.addAll(this.commision.getTransaction());
         return out;
     
     

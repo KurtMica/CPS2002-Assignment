@@ -79,7 +79,7 @@ public class AtomicTransaction extends Transaction
         public List<AtomicTransaction> getTransaction()
         {
             List<AtomicTransaction> out = new ArrayList();
-            //out.add(this);
+            out.add(this);
             return out;
         }
 }

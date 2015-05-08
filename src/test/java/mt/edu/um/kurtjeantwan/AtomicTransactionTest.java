@@ -167,4 +167,15 @@ public class AtomicTransactionTest
 		Thread.sleep(20000); // 20 seconds
 		Assert.assertTrue(trn.timeElapsed());
 	}
+        
+        
+        @Test
+        public void testGetTransaction()
+        {
+        
+            AtomicTransaction atrn1 = new AtomicTransaction("first",1,2,1,accountDb);
+            
+            Assert.assertEquals(atrn1, atrn1.getTransaction());
+        
+        }
 }

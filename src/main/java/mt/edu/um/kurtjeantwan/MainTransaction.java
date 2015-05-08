@@ -43,7 +43,6 @@ public class MainTransaction extends CompoundTransaction {
         
         }
         this.commision.addCommision(sum);
-        this.commision.process();
         return true;
     
     }
@@ -61,6 +60,15 @@ public class MainTransaction extends CompoundTransaction {
             return 3133;
         }
     
+    
+    
+    }
+    
+    public boolean process() throws Exception
+    {
+        super.process();
+        this.commision.process();
+        return true;
     
     
     }

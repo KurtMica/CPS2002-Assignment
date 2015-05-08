@@ -8,6 +8,9 @@ package mt.edu.um.kurtjeantwan;
 
 import org.junit.Before;
 import org.junit.Test;
+import java.util.List;
+import java.util.ArrayList;
+
 
 import junit.framework.Assert;
 
@@ -126,5 +129,29 @@ public class CompoundTransactionTest
         trnComp.addTransaction(trn1);
         trnComp.addTransaction(trn2);
         Assert.assertTrue(trnComp.process()); //Exception thrown here
+    }
+    
+    
+    @Test
+    public void testGetTransaction()
+    {
+        AtomicTransaction atrn1 = new AtomicTransaction("first",1,3,4,accountDb);
+        AtomicTransaction atrn2 = new AtomicTransaction("second",2,4,1,accountDb); 
+        AtomicTransaction atrn3 = new AtomicTransaction("third",1,4,2,accountDb);
+        CompoundTransaction trnComp = new CompoundTransaction();
+        trnComp.addTransaction(atrn1);
+        trnComp.addTransaction(atrn2);
+        trnComp.addTransaction(atrn3);
+        
+        
+        List<AtomicTransaction> test = new ArrayList();
+        test.add(atrn2);
+        test.add(atrn3);
+        test.add(atrn1);
+        
+        Assert.assertEquals(test, trnComp.getTransaction());
+        
+      
+    
     }
 }

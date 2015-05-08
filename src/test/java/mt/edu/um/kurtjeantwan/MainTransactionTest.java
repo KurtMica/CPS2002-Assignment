@@ -82,7 +82,7 @@ public class MainTransactionTest {
     @Test
     public void testAddTransactionsFail() throws Exception
     {
-        MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
+        MainTransaction trn1 = new MainTransaction(accountDb, Risk.low);
         destinations.add(4); //added extra destination
         
         Assert.assertFalse(trn1.addTransactions(destinations,amounts));
@@ -127,6 +127,49 @@ public class MainTransactionTest {
         trn1.addTransactions(destinations,amounts);
         trn1.process();
         Assert.assertEquals(46.8, Math.round(accountDb.getAccount(3143).checkBalance()*100.00)/100.00);
+    
+    }
+    
+    @Test
+    public void testGetTransaction() throws Exception
+    {
+        
+        List <Integer> dests = new ArrayList();
+        List <Double> amounts = new ArrayList();
+        
+        dests.add(4);
+        amounts.add(50.0);
+        
+        dests.add(3);
+        amounts.add(10.5);
+        
+        dests.add(5);
+        amounts.add(33.5);
+        
+        
+        MainTransaction main = new MainTransaction(accountDb, Risk.high);
+        
+        main.addTransactions(dests, amounts);
+        
+        
+        List<AtomicTransaction> test = new ArrayList();
+        
+        //Adding deposits to test
+        test.add(new Deposit(3,2.1,accountDb,Risk.high));
+        test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        test.add(new Deposit(4,10.0,accountDb,Risk.high));
+        
+        //Adding atomics to test
+        test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
+        
+        test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb)); //This is the commision
+        
+        test.add(new AtomicTransaction(main.getSource(), 5, 26.5, accountDb));
+        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
+        
+        Assert.assertEquals(test, main.getTransaction());
+        
+    
     
     }
     

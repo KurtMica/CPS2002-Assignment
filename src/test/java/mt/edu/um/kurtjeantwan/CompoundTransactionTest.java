@@ -145,9 +145,9 @@ public class CompoundTransactionTest
         
         
         List<AtomicTransaction> test = new ArrayList();
+        test.add(atrn1);
         test.add(atrn2);
         test.add(atrn3);
-        test.add(atrn1);
         
         Assert.assertEquals(test, trnComp.getTransaction());
         

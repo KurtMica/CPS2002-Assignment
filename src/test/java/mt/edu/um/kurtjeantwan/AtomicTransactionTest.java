@@ -4,6 +4,8 @@ import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  * This class is used to test the Atomic AtomicTransaction Class.
@@ -175,7 +177,9 @@ public class AtomicTransactionTest
         
             AtomicTransaction atrn1 = new AtomicTransaction("first",1,2,1,accountDb);
             
-            Assert.assertEquals(atrn1, atrn1.getTransaction());
+            List<AtomicTransaction> test = new ArrayList();
+            test.add(atrn1);
+            Assert.assertEquals(test, atrn1.getTransaction());
         
         }
 }

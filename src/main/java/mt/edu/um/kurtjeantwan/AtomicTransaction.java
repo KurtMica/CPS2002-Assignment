@@ -1,5 +1,6 @@
 package mt.edu.um.kurtjeantwan;
-
+import java.util.List;
+import java.util.ArrayList;
 /**
  * This is the Atomic Transaction Class.
  * Handles the transfer of money between 2 accounts, whilst ensuring that
@@ -74,4 +75,11 @@ public class AtomicTransaction extends Transaction
 			return false;
 		}
 	}
+        
+        public List<AtomicTransaction> getTransaction()
+        {
+            List<AtomicTransaction> out = new ArrayList();
+            //out.add(this);
+            return out;
+        }
 }

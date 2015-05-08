@@ -134,38 +134,44 @@ public class MainTransactionTest {
     public void testGetTransaction() throws Exception
     {
         
-        List <Integer> dests = new ArrayList();
-        List <Double> amounts = new ArrayList();
+        destinations = new ArrayList();
+        amounts = new ArrayList();
         
-        dests.add(4);
+        destinations.add(4);
         amounts.add(50.0);
         
-        dests.add(3);
+        destinations.add(3);
         amounts.add(10.5);
         
-        dests.add(5);
+        destinations.add(5);
         amounts.add(33.5);
         
         
         MainTransaction main = new MainTransaction(accountDb, Risk.high);
         
-        main.addTransactions(dests, amounts);
+        main.addTransactions(destinations, amounts);
         
         
         List<AtomicTransaction> test = new ArrayList();
         
-        //Adding deposits to test
-        test.add(new Deposit(3,2.1,accountDb,Risk.high));
-        test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        //Adding deposit and transaction to 4
         test.add(new Deposit(4,10.0,accountDb,Risk.high));
+        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
         
-        //Adding atomics to test
+        //Adding deposit and transaction to 3
+        test.add(new Deposit(3,2.1,accountDb,Risk.high));
         test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
         
+        //Adding deposit and transaction to 5
+        test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
+        
+        
+        //Adding Commision      
         test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb)); //This is the commision
         
-        test.add(new AtomicTransaction(main.getSource(), 5, 26.5, accountDb));
-        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
+        
+        
         
         Assert.assertEquals(test, main.getTransaction());
         

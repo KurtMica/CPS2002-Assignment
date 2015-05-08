@@ -1,4 +1,5 @@
 package mt.edu.um.kurtjeantwan;
+import java.util.List;
 
 public abstract class Transaction
 {
@@ -12,4 +13,6 @@ public abstract class Transaction
 	}
 	
 	protected abstract boolean process() throws Exception;
+        
+        protected abstract List<AtomicTransaction> getTransaction();
 }

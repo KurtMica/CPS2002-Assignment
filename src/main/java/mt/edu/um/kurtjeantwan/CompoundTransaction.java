@@ -38,4 +38,15 @@ public class CompoundTransaction extends Transaction
     			throw new Exception("Failed Sub-Transaction");
     	return true;
     }
+    
+    public List<AtomicTransaction> getTransaction(){
+        
+        List<AtomicTransaction> result = new ArrayList();
+        /*for(Transaction i: this.subTransactions){
+            
+            result.addAll(i.getTransaction());
+        }*/
+        return result;
+    
+    }
 }

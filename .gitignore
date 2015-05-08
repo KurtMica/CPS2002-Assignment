@@ -5,3 +5,4 @@
 .project
 .netbeans_automatic_build
 bin
+*.txt

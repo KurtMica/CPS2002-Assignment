@@ -2,6 +2,7 @@
 package mt.edu.um.kurtjeantwan;
 
 import java.util.List;
+import java.util.ArrayList;
 
 public class MainTransaction extends CompoundTransaction {
     
@@ -69,6 +70,16 @@ public class MainTransaction extends CompoundTransaction {
         super.process();
         this.commision.process();
         return true;
+    
+    
+    }
+    
+    public List<AtomicTransaction>getTransaction()
+    {
+        List<AtomicTransaction> out = new ArrayList();
+        //out = super.getTransaction();
+        //out.addAll(this.commision.getTransaction());
+        return out;
     
     
     }

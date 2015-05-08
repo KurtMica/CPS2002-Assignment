@@ -155,28 +155,141 @@ public class MainTransactionTest {
         List<AtomicTransaction> test = new ArrayList();
         
         //Adding deposit and transaction to 4
-        test.add(new Deposit(4,10.0,accountDb,Risk.high));
-        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
+        
+        
         
         //Adding deposit and transaction to 3
-        test.add(new Deposit(3,2.1,accountDb,Risk.high));
-        test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
+        
+        
         
         //Adding deposit and transaction to 5
-        test.add(new Deposit(5,6.7,accountDb,Risk.high));
-        test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
+        
+        ;
         
         
         //Adding Commision      
-        test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb)); //This is the commision
+         //This is the commision
         
         
         
         
-        Assert.assertEquals(test, main.getTransaction());
+        
         
     
     
     }*/
+    
+    @Test
+    public void testGetTransactionsAscend() throws Exception
+    {
+        
+        destinations = new ArrayList();
+        amounts = new ArrayList();
+        
+        destinations.add(4);
+        amounts.add(50.0);
+        
+        destinations.add(3);
+        amounts.add(10.5);
+        
+        destinations.add(5);
+        amounts.add(33.5);
+        
+        
+        MainTransaction main = new MainTransaction(accountDb, Risk.high);
+        
+        main.addTransactions(destinations, amounts);
+        
+        List<AtomicTransaction> test = new ArrayList();
+        
+        //Adding Transactions in Ascending Order for testing purposes
+        
+        test.add(new Deposit(3,2.1,accountDb,Risk.high));
+        test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
+        test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
+        test.add(new Deposit(4,10.0,accountDb,Risk.high));
+        test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
+        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
+        
+        Assert.assertEquals(test, main.getTransactionAscend());
+        
+    
+    
+    }
+    
+    
+    @Test
+    public void testGetTransactionsDescend() throws Exception
+    {
+        
+        destinations = new ArrayList();
+        amounts = new ArrayList();
+        
+        destinations.add(4);
+        amounts.add(50.0);
+        
+        destinations.add(3);
+        amounts.add(10.5);
+        
+        destinations.add(5);
+        amounts.add(33.5);
+        
+        
+        MainTransaction main = new MainTransaction(accountDb, Risk.high);
+        
+        main.addTransactions(destinations, amounts);
+        
+        List<AtomicTransaction> test = new ArrayList();
+        
+        //Adding Transactions in Descending Order for testing purposes
+        
+        test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
+        test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
+        test.add(new Deposit(4,10.0,accountDb,Risk.high));
+        test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
+        test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
+        test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        test.add(new Deposit(3,2.1,accountDb,Risk.high));
+        
+        
+        Assert.assertEquals(test, main.getTransactionDesc());
+       
+    }
+    
+    @Test
+    public void testGetTransactionFilter() throws Exception
+    {
+    
+        destinations = new ArrayList();
+        amounts = new ArrayList();
+        
+        destinations.add(4);
+        amounts.add(50.0);
+        
+        destinations.add(3);
+        amounts.add(10.5);
+        
+        destinations.add(5);
+        amounts.add(33.5);
+        
+        
+        MainTransaction main = new MainTransaction(accountDb, Risk.high);
+        
+        main.addTransactions(destinations, amounts);
+        
+        List<AtomicTransaction> test = new ArrayList();
+        
+        test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
+        
+        Assert.assertEquals(test, main.getTransactionFilter(6565));
+        
+        
+    
+    
+    
+    
+    
+    }
     
 }

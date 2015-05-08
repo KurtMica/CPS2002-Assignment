@@ -1,6 +1,7 @@
 package mt.edu.um.kurtjeantwan;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public abstract class Transaction
 {
@@ -20,9 +21,9 @@ public abstract class Transaction
         public List<AtomicTransaction> getTransectionAscend()
         {
             List<AtomicTransaction> out = new ArrayList();
-            /*
+            
             out = this.getTransaction();
-            Collections.sort(out);*/
+            Collections.sort(out);
             return out;  
             
         
@@ -32,8 +33,8 @@ public abstract class Transaction
         {
             List<AtomicTransaction> out = new ArrayList();
             
-            //out = this.getTransectionsAscend();
-            //Collections.reverse(out);
+            out = this.getTransectionAscend();
+            Collections.reverse(out);
             
             return out;
               
@@ -43,7 +44,7 @@ public abstract class Transaction
         {
             List<AtomicTransaction> out = new ArrayList();
             
-            /*for(AtomicTransaction i : this.getTransectionAscend())
+            for(AtomicTransaction i : this.getTransectionAscend())
             {
             
                 if(i.getSource() == src)
@@ -51,7 +52,7 @@ public abstract class Transaction
                     out.add(i);                
                 }
                        
-            }*/
+            }
             return out;       
         }
 }

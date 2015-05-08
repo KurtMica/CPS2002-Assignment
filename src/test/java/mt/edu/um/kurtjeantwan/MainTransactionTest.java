@@ -130,54 +130,6 @@ public class MainTransactionTest {
     
     }
     
-    /*@Test
-    public void testGetTransaction() throws Exception
-    {
-        
-        destinations = new ArrayList();
-        amounts = new ArrayList();
-        
-        destinations.add(4);
-        amounts.add(50.0);
-        
-        destinations.add(3);
-        amounts.add(10.5);
-        
-        destinations.add(5);
-        amounts.add(33.5);
-        
-        
-        MainTransaction main = new MainTransaction(accountDb, Risk.high);
-        
-        main.addTransactions(destinations, amounts);
-        
-        
-        List<AtomicTransaction> test = new ArrayList();
-        
-        //Adding deposit and transaction to 4
-        
-        
-        
-        //Adding deposit and transaction to 3
-        
-        
-        
-        //Adding deposit and transaction to 5
-        
-        ;
-        
-        
-        //Adding Commision      
-         //This is the commision
-        
-        
-        
-        
-        
-        
-    
-    
-    }*/
     
     @Test
     public void testGetTransactionsAscend() throws Exception
@@ -204,15 +156,33 @@ public class MainTransactionTest {
         
         //Adding Transactions in Ascending Order for testing purposes
         
+
         test.add(new Deposit(3,2.1,accountDb,Risk.high));
+        
         test.add(new Deposit(5,6.7,accountDb,Risk.high));
+        
+
         test.add(new AtomicTransaction(main.getSource(), 3, 8.4, accountDb));
+        
         test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
+        
+       
+      
         test.add(new Deposit(4,10.0,accountDb,Risk.high));
+        
+      
         test.add(new AtomicTransaction(main.getSource(), 5, 26.8, accountDb));
+        
+        
         test.add(new AtomicTransaction(main.getSource(), 4, 40, accountDb));
         
-        Assert.assertEquals(test, main.getTransectionAscend());
+        
+        List<AtomicTransaction> check = main.getTransectionAscend();
+        
+        for(int i = 0; i<check.size(); i++){
+            Assert.assertEquals(test.get(i).getSource(), check.get(i).getSource());
+        }
+        
         
     
     
@@ -252,8 +222,11 @@ public class MainTransactionTest {
         test.add(new Deposit(5,6.7,accountDb,Risk.high));
         test.add(new Deposit(3,2.1,accountDb,Risk.high));
         
+        List<AtomicTransaction> check = main.getTransectionDescend();
         
-        Assert.assertEquals(test, main.getTransectionDescend());
+        for(int i = 0; i<check.size(); i++){
+            Assert.assertEquals(test.get(i).getSource(), check.get(i).getSource());
+        }
        
     }
     
@@ -282,7 +255,7 @@ public class MainTransactionTest {
         
         test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
         
-        Assert.assertEquals(test, main.getTransectionFilter(6565));
+        Assert.assertEquals(test.get(0).getSource(), main.getTransectionFilter(6565).get(0).getSource());
         
         
     

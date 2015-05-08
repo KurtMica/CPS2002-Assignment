@@ -94,7 +94,11 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
         @Override
         public int compareTo(AtomicTransaction other)
         {
-            return (int) (this.amount - other.amount);
+             /*if((this.amount < other.amount)) return 1;
+             if((this.amount > other.amount)) return -1;
+             return 0;*/
+            return Double.compare(this.amount, other.amount);
         
         }
+        
 }

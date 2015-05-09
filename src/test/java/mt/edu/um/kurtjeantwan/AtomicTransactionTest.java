@@ -24,6 +24,13 @@ public class AtomicTransactionTest
 		accountDb.addAccount(2, "Mary");
 	}
 	
+	@Test
+	public void testGetDestination() throws Exception
+	{
+		AtomicTransaction trn = new AtomicTransaction(1, 2, 3, accountDb);
+		Assert.assertEquals(trn.getDestination(), 2);
+	}
+	
 	/* process tests */
 	
 	@Test
@@ -169,17 +176,14 @@ public class AtomicTransactionTest
 		Thread.sleep(20000); // 20 seconds
 		Assert.assertTrue(trn.timeElapsed());
 	}
+	
+    @Test
+    public void testGetTransaction()
+    {
+        AtomicTransaction atrn1 = new AtomicTransaction("first",1,2,1,accountDb);
         
-        
-        @Test
-        public void testGetTransaction()
-        {
-        
-            AtomicTransaction atrn1 = new AtomicTransaction("first",1,2,1,accountDb);
-            
-            List<AtomicTransaction> test = new ArrayList();
-            test.add(atrn1);
-            Assert.assertEquals(test, atrn1.getTransaction());
-        
-        }
+        List<AtomicTransaction> test = new ArrayList();
+        test.add(atrn1);
+        Assert.assertEquals(test, atrn1.getTransaction());
+    }
 }

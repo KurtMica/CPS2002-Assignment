@@ -5,12 +5,12 @@ import org.junit.Before;
 import org.junit.Assert;
 
 /**
- *This class is used to test the TransactionManager Class.
-  Before each test, the setup function will be executed.
+ * This class is used to test the TransactionManager Class.
+ * Before each test, the setup function will be executed.
  * 
  */
-public class TransactionManagerTest {
-    
+public class TransactionManagerTest
+{
     private AccountDatabase accountDb;
     private TransactionManager tm1;
     

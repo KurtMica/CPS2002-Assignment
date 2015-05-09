@@ -1,9 +1,6 @@
 package mt.edu.um.kurtjeantwan;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.HiddenAction;
-
 import junit.framework.Assert;
-
 import org.junit.Before;
 import org.junit.Test;
 

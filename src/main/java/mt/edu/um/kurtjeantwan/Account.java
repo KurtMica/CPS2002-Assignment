@@ -42,7 +42,7 @@ public class Account
     
     public boolean adjustBalance(double amount)
     {
-        if((amount + accountBalance >= 0))
+        if((amount + accountBalance) >= 0)
         {
             accountBalance += amount;
             return true;

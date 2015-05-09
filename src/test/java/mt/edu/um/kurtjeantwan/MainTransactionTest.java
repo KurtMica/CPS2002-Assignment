@@ -25,7 +25,6 @@ public class MainTransactionTest {
     @Before
     public void setup()
     {
-        
         accountDb = new AccountDatabase();
         
         //Setting up Commision accounts
@@ -40,9 +39,9 @@ public class MainTransactionTest {
         
         //Setting up Deposit accounts
         accountDb.addAccount(3123, "High Risk Deposit Source");
-	accountDb.getAccount(3123).adjustBalance(100);
-	accountDb.addAccount(8665, "Low Risk Deposit Source");
-	accountDb.getAccount(8665).adjustBalance(100);
+        accountDb.getAccount(3123).adjustBalance(100);
+		accountDb.addAccount(8665, "Low Risk Deposit Source");
+		accountDb.getAccount(8665).adjustBalance(100);
         
         //Setting up Main accounts
         accountDb.addAccount(3143, "High Risk Main Source");
@@ -64,10 +63,14 @@ public class MainTransactionTest {
         amounts = new ArrayList();
         amounts.add(20.5);
         amounts.add(46.0);
-        
-        
     }
     
+    @Test
+    public void testGetSource()
+    {
+    	MainTransaction trn = new MainTransaction(accountDb, Risk.low);
+    	Assert.assertEquals(trn.getSource(), 3133);
+    }
     
     @Test
     public void testAddTransactionsSuccess() throws Exception
@@ -75,7 +78,6 @@ public class MainTransactionTest {
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         
         Assert.assertTrue(trn1.addTransactions(destinations,amounts));
-        
     }
     
     
@@ -86,55 +88,39 @@ public class MainTransactionTest {
         destinations.add(4); //added extra destination
         
         Assert.assertFalse(trn1.addTransactions(destinations,amounts));
-        
     }
-    
-    
-    
       
     @Test
     public void testDeposits() throws Exception
     {
-    
-    MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
-    trn1.addTransactions(destinations,amounts);
-    trn1.process();
-    
-    Assert.assertEquals(86.7, accountDb.getAccount(3123).checkBalance());
-     
-    
+	    MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
+	    trn1.addTransactions(destinations,amounts);
+	    trn1.process();
+	    
+	    Assert.assertEquals(86.7, accountDb.getAccount(3123).checkBalance());
     }
-    
     
     @Test
     public void testCommision() throws Exception
     {
-        
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         trn1.addTransactions(destinations,amounts);
         trn1.process();
         Assert.assertEquals(93.35, accountDb.getAccount(6565).checkBalance());
-        
-        
     }
-    
     
     @Test
     public void testMainSource() throws Exception
     {
-    
         MainTransaction trn1 = new MainTransaction(accountDb, Risk.high);
         trn1.addTransactions(destinations,amounts);
         trn1.process();
         Assert.assertEquals(46.8, Math.round(accountDb.getAccount(3143).checkBalance()*100.00)/100.00);
-    
     }
-    
     
     @Test
     public void testGetTransactionsAscend() throws Exception
     {
-        
         destinations = new ArrayList();
         amounts = new ArrayList();
         
@@ -182,12 +168,7 @@ public class MainTransactionTest {
         for(int i = 0; i<check.size(); i++){
             Assert.assertEquals(test.get(i).getAmount(), check.get(i).getAmount());
         }
-        
-        
-    
-    
     }
-    
     
     @Test
     public void testGetTransactionsDescend() throws Exception
@@ -227,13 +208,11 @@ public class MainTransactionTest {
         for(int i = 0; i<check.size(); i++){
             Assert.assertEquals(test.get(i).getAmount(), check.get(i).getAmount());
         }
-       
     }
     
     @Test
     public void testGetTransactionFilter() throws Exception
     {
-    
         destinations = new ArrayList();
         amounts = new ArrayList();
         
@@ -256,13 +235,5 @@ public class MainTransactionTest {
         test.add(new AtomicTransaction(6565, 4444, 9.4, accountDb));
         
         Assert.assertEquals(test.get(0).getSource(), main.getTransectionFilter(6565).get(0).getSource());
-        
-        
-    
-    
-    
-    
-    
     }
-    
 }

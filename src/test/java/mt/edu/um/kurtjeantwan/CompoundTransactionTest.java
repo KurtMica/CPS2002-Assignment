@@ -1,17 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package mt.edu.um.kurtjeantwan;
-
 
 import org.junit.Before;
 import org.junit.Test;
 import java.util.List;
 import java.util.ArrayList;
-
-
 import junit.framework.Assert;
 
 /**
@@ -20,7 +12,6 @@ import junit.framework.Assert;
  */
 public class CompoundTransactionTest 
 {
-    
     private AccountDatabase accountDb;
     private Transaction trn1;
     private Transaction trn2;
@@ -131,7 +122,6 @@ public class CompoundTransactionTest
         Assert.assertTrue(trnComp.process()); //Exception thrown here
     }
     
-    
     @Test
     public void testGetTransaction()
     {
@@ -150,8 +140,5 @@ public class CompoundTransactionTest
         test.add(atrn3);
         
         Assert.assertEquals(test, trnComp.getTransaction());
-        
-      
-    
     }
 }

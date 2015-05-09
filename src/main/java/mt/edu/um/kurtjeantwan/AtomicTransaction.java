@@ -11,9 +11,9 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
 	private int sourceAccountNumber;
 	private int destinationAccountNumber;
 	private double amount;
-        protected AccountDatabase accountDb;
+    protected AccountDatabase accountDb;
 	
-	public AtomicTransaction(int source, int destination, double amount, AccountDatabase database)
+	protected AtomicTransaction(int source, int destination, double amount, AccountDatabase database)
 	{
 		super("Atomic Transaction");
                 this.accountDb = database;
@@ -22,7 +22,7 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
 		this.amount = amount;
 	}
         
-    public AtomicTransaction(String desc, int source, int destination, double amount, AccountDatabase database)
+    protected AtomicTransaction(String desc, int source, int destination, double amount, AccountDatabase database)
 	{
         super(desc);
                 this.accountDb = database;
@@ -37,25 +37,25 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
 		Account dst = accountDb.getAccount(destinationAccountNumber);
 		// check if account exists
                 
-		if((src != null && dst != null))
+		if((src != null) && (dst != null))
 		{
-                        while(!timeElapsed());
+			while(!timeElapsed());
 			// check if there is enough money in source
 			if(src.adjustBalance(-amount))
 			{
 				dst.adjustBalance(amount);
-                                long currentTime = System.currentTimeMillis();
-                                //Modify LastUsed
-                                src.setLastUsed(currentTime);
-                                dst.setLastUsed(currentTime);
-                                return true;
+                long currentTime = System.currentTimeMillis();
+                // modify lastUsed
+                src.setLastUsed(currentTime);
+                dst.setLastUsed(currentTime);
+                return true;
 			}
 			else
 			{
 				return false;
 			}
 		}
-                else
+		else
 		{
 			return false;
 		}
@@ -67,51 +67,39 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
 		long currentTime = System.currentTimeMillis();
 		if((Math.abs(currentTime - accountDb.getAccount(sourceAccountNumber).checkLastUsed()) >= 15000)
 				&& (Math.abs(currentTime - accountDb.getAccount(destinationAccountNumber).checkLastUsed()) >= 15000))
-		{
 			return true;
-		}
 		else
-		{
 			return false;
-		}
 	}
         
-        public List<AtomicTransaction> getTransaction()
-        {
-            List<AtomicTransaction> out = new ArrayList();
-            out.add(this);
-            return out;
-        }
-        
-        
-        public int getSource()
-        {
-        
-            return this.sourceAccountNumber;
-        }
-        
-        public int getDestination()
-        {
-            return this.destinationAccountNumber;
-        
-        }
-        
-        public double getAmount()
-        {
-            return this.amount;
-        
-        }
-        
-        
-        
-        @Override
-        public int compareTo(AtomicTransaction other)
-        {
-             /*if((this.amount < other.amount)) return 1;
-             if((this.amount > other.amount)) return -1;
-             return 0;*/
-            return Double.compare(this.amount, other.amount);
-        
-        }
-        
+    public List<AtomicTransaction> getTransaction()
+    {
+        List<AtomicTransaction> out = new ArrayList();
+        out.add(this);
+        return out;
+    }
+    
+    public int getSource()
+    {
+        return this.sourceAccountNumber;
+    }
+    
+    public int getDestination()
+    {
+        return this.destinationAccountNumber;
+    }
+    
+    public double getAmount()
+    {
+        return this.amount;
+    }
+    
+    @Override
+    public int compareTo(AtomicTransaction other)
+    {
+         /*if((this.amount < other.amount)) return 1;
+         if((this.amount > other.amount)) return -1;
+         return 0;*/
+        return Double.compare(this.amount, other.amount);
+    }
 }

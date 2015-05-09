@@ -42,11 +42,10 @@ public class CompoundTransaction extends Transaction
     public List<AtomicTransaction> getTransaction(){
         
         List<AtomicTransaction> result = new ArrayList();
-        for(Transaction i: this.subTransactions){
-            
+        for(Transaction i: this.subTransactions)
+        {
             result.addAll(i.getTransaction());
         }
         return result;
-    
     }
 }

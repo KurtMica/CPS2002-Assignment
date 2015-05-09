@@ -84,9 +84,22 @@ public class AtomicTransaction extends Transaction implements Comparable<AtomicT
         }
         
         
-        public int getSource(){
+        public int getSource()
+        {
         
             return this.sourceAccountNumber;
+        }
+        
+        public int getDestination()
+        {
+            return this.destinationAccountNumber;
+        
+        }
+        
+        public double getAmount()
+        {
+            return this.amount;
+        
         }
         
         

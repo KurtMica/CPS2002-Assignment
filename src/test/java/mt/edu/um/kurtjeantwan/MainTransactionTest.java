@@ -180,7 +180,7 @@ public class MainTransactionTest {
         List<AtomicTransaction> check = main.getTransectionAscend();
         
         for(int i = 0; i<check.size(); i++){
-            Assert.assertEquals(test.get(i).getSource(), check.get(i).getSource());
+            Assert.assertEquals(test.get(i).getAmount(), check.get(i).getAmount());
         }
         
         
@@ -225,7 +225,7 @@ public class MainTransactionTest {
         List<AtomicTransaction> check = main.getTransectionDescend();
         
         for(int i = 0; i<check.size(); i++){
-            Assert.assertEquals(test.get(i).getSource(), check.get(i).getSource());
+            Assert.assertEquals(test.get(i).getAmount(), check.get(i).getAmount());
         }
        
     }
